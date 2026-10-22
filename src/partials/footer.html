@@ -1,0 +1,67 @@
+<footer class="site-footer">
+  <section class="contact bg-glow-b" aria-labelledby="contact-title">
+    <span class="anchor anchor--contact" id="contact"></span>
+    <div class="strip contact__strip">
+      <div class="col contact__col-text">
+        <h2 class="contact__title t-h2 fade" id="contact-title">For Any Assistance Required Please Reach Out</h2>
+      </div>
+      <div class="col contact__col-form">
+        <form class="contact-form" action="/api/contact" method="post" novalidate data-success="Thanks, we received your submission.">
+          <div class="field" data-error="Enter a first name.">
+            <label for="cf-first">First name <span class="req" aria-hidden="true">*</span></label>
+            <div class="field__box"><input id="cf-first" name="firstName" type="text" required autocomplete="given-name" maxlength="100"></div>
+          </div>
+          <div class="field">
+            <label for="cf-last">Last name</label>
+            <div class="field__box"><input id="cf-last" name="lastName" type="text" autocomplete="family-name" maxlength="100"></div>
+          </div>
+          <div class="field" data-error="Enter an email address." data-error-format="Enter an email address like example@mysite.com.">
+            <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
+            <div class="field__box"><input id="cf-email" name="email" type="email" required autocomplete="email" maxlength="200"></div>
+          </div>
+          <div class="field field--phone" data-error-format="Enter a phone number.">
+            <label for="cf-phone">Phone</label>
+            <div class="field__box">
+              <span class="country">
+                <span class="country__flag" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" fill-rule="evenodd" d="M11.5 19c-.17 0-.33-.01-.5-.03V16.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 0-.15-.36L4.8 8.14A7.5 7.5 0 0 1 11.5 4c1.26 0 2.45.32 3.49.87L15 6.5a.5.5 0 0 1-.5.5h-2.16a.5.5 0 0 0-.35.15l-1.84 1.83a.5.5 0 0 0-.15.36v1.16c0 .83.67 1.5 1.5 1.5h3.79L17 13.7v2.88A7.48 7.48 0 0 1 11.5 19M4 11.5c0-.83.14-1.62.39-2.37L8 12.71v2.79c0 .83.67 1.5 1.5 1.5h.5v1.85A7.5 7.5 0 0 1 4 11.5m15 0c0 1.36-.37 2.63-1 3.73V13.5a.5.5 0 0 0-.15-.35l-2-2a.5.5 0 0 0-.35-.15h-4a.5.5 0 0 1-.5-.5v-.96L12.55 8h1.95a1.5 1.5 0 0 0 1.5-1.51l-.01-.98A7.49 7.49 0 0 1 19 11.5M11.5 3a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17"/></svg></span>
+                <svg class="country__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="m15.65 6.65.7.7-5.29 5.3-.7.7-.01-.01-.71-.7-5.29-5.3.7-.7 5.3 5.29z"/></svg>
+                <select class="country__select" name="phoneCountry" aria-label="Select a country code"><option value="">Select a country code</option></select>
+              </span>
+              <input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="40">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-company">Company name</label>
+            <div class="field__box"><input id="cf-company" name="company" type="text" autocomplete="organization" maxlength="200"></div>
+          </div>
+          <div class="field" data-error="Enter an answer.">
+            <label for="cf-message">How can we help you? <span class="req" aria-hidden="true">*</span></label>
+            <div class="field__box"><input id="cf-message" name="message" type="text" required maxlength="4000"></div>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+          <button class="btn btn--submit" type="submit">Submit</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <div class="strip strip--full footer-bar">
+    <div class="col footer-bar__main">
+      <a class="footer-brand" href="/" aria-label="Unity Dispatch home">
+        <img class="footer-brand__mark" src="/assets/img/logo-mark.png" width="53" height="46" alt="" loading="lazy">
+        <svg class="footer-brand__word fade-d" aria-hidden="true"><use href="#wordmark"/></svg>
+      </a>
+      <div class="footer-contact">
+        <p class="footer-contact__tel fade-d">Tel: <br class="br-m">+1.262.563.9541</p>
+        <p class="footer-contact__email fade-d">Email: <a href="mailto:info@unitydispatch.net">info@unitydispatch.net</a></p>
+        <ul class="social fade-d" aria-label="Social bar">
+          <li><a href="https://x.com/ChiasticChaos" target="_blank" rel="noopener"><img src="/assets/img/icon-twitter.png" width="26" height="26" alt="Twitter" loading="lazy"></a></li>
+          <li><a href="https://www.linkedin.com/company/unity-dispatch/" target="_blank" rel="noopener"><img src="/assets/img/icon-linkedin.png" width="26" height="26" alt="LinkedIn" loading="lazy"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col footer-bar__aside">
+      <p class="footer-copy fade-d">© 2025. Powered by Tenago Labs</p>
+    </div>
+  </div>
+</footer>

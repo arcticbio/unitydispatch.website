@@ -1,0 +1,33 @@
+<button class="back-to-top" type="button" aria-label="Back to top" hidden>
+  <svg viewBox="20 20 160 160" aria-hidden="true"><path fill="#fff" d="M180 100a80 80 0 1 1-160 0 80 80 0 0 1 160 0z"/><path fill="#000" d="M63.4 114 60 109.6 100 78l40 31.7-3.4 4.3-36.6-28.3z"/><path fill="#595959" d="M100 24a76 76 0 1 0 0 152 76 76 0 0 0 0-152zm0-4a80 80 0 1 1 0 160 80 80 0 0 1 0-160z"/></svg>
+</button>
+<div class="chat" data-chat>
+  <button class="chat__launcher" type="button" aria-label="Open chat" aria-expanded="false" aria-controls="chat-panel">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="#fff" d="M12 4.5c4.7 0 8 3.04 8 7.08 0 1.53-.47 2.95-1.3 4.12l.94 3.1a.5.5 0 0 1-.6.63l-3.2-.88A8.9 8.9 0 0 1 12 19.5c-4.69 0-8-3.17-8-7.5S7.31 4.5 12 4.5Z"/><circle fill="#3a8088" cx="8.7" cy="12" r="1.05"/><circle fill="#3a8088" cx="12" cy="12" r="1.05"/><circle fill="#3a8088" cx="15.3" cy="12" r="1.05"/></svg>
+  </button>
+  <section class="chat__panel" id="chat-panel" aria-label="Chat" hidden>
+    <header class="chat__header">
+      <h2 class="chat__title">Go On</h2>
+      <p class="chat__status"><span class="chat__dot" aria-hidden="true"></span>Online</p>
+      <button class="chat__close" type="button" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M17.08 6 18 6.92 12.92 12 18 17.08l-.92.92L12 12.92 6.92 18 6 17.08 11.08 12 6 6.92 6.92 6 12 11.08z"/></svg>
+      </button>
+    </header>
+    <div class="chat__log" aria-live="polite"></div>
+    <form class="chat__details" hidden novalidate>
+      <p class="chat__prompt">Leave your details and we'll get back to you here or by email.</p>
+      <label class="visually-hidden" for="chat-name">Name</label>
+      <input id="chat-name" name="name" type="text" placeholder="Name" autocomplete="name" maxlength="100">
+      <label class="visually-hidden" for="chat-email">Email</label>
+      <input id="chat-email" name="email" type="email" placeholder="Email*" autocomplete="email" required maxlength="200">
+      <button type="submit">Send</button>
+    </form>
+    <form class="chat__compose" novalidate>
+      <label class="visually-hidden" for="chat-message">Type your message</label>
+      <textarea id="chat-message" name="message" rows="1" placeholder="Type your message..." maxlength="4000"></textarea>
+      <button class="chat__send" type="submit" aria-label="Send message">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M4.4 19.4 21 12 4.4 4.6l-.02 5.76L16 12 4.38 13.64z"/></svg>
+      </button>
+    </form>
+  </section>
+</div>

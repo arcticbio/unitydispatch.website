@@ -26,7 +26,8 @@ const DESKTOP_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 const VIEWPORTS = {
   desktop: { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, userAgent: DESKTOP_UA },
   tablet: { viewport: { width: 768, height: 1024 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true, userAgent: devices['iPad Mini'].userAgent },
-  mobile: { ...devices['iPhone 13'], deviceScaleFactor: 1 },
+  // The original's phone layout is a 320px viewport scaled up; compare at 320 CSS px.
+  mobile: { ...devices['iPhone 13'], viewport: { width: 320, height: 545 }, deviceScaleFactor: 1 },
 };
 
 const pages = JSON.parse(await fs.readFile(path.join(CAPTURE, 'pages.json'), 'utf8'));
@@ -72,7 +73,7 @@ async function autoScroll(page) {
 const browser = await chromium.launch();
 const summary = [];
 for (const vp of VPS) {
-  const ctx = await browser.newContext(VIEWPORTS[vp]);
+  const ctx = await browser.newContext({ ...VIEWPORTS[vp], reducedMotion: 'reduce' });
   for (const p of pages) {
     if (ONLY && !ONLY.includes(p.key)) continue;
     const kind = FOLD ? `${vp}-fold` : `${vp}-full`;
