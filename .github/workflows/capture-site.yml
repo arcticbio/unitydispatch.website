@@ -60,7 +60,14 @@ jobs:
       - name: Crawl site
         working-directory: tools/capture
         continue-on-error: true
-        run: OUT_DIR=../../_capture node capture.mjs 2>&1 | tee ../../_capture/crawl.log
+        run: |
+          if [ -f ../../_capture/pages.json ]; then echo "Crawl already captured; skipping"; exit 0; fi
+          OUT_DIR=../../_capture node capture.mjs 2>&1 | tee ../../_capture/crawl.log
+
+      - name: Capture details (originals, widths, interactions)
+        working-directory: tools/capture
+        continue-on-error: true
+        run: OUT_DIR=../../_capture node capture-details.mjs 2>&1 | tee ../../_capture/details.log
 
       - name: Commit capture
         if: always()
