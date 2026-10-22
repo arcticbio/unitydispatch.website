@@ -1,0 +1,903 @@
+[
+ {
+  "url": "https://www.unitydispatch.net/",
+  "key": "home",
+  "viewports": {
+   "desktop": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/",
+    "perf": {
+     "domContentLoaded": 278,
+     "load": 797,
+     "requests": 151,
+     "transferBytes": 1551550,
+     "decodedBytes": 5911563,
+     "byType": {
+      "script": 862813,
+      "img": 216101,
+      "css": 63668,
+      "beacon": 0,
+      "link": 73209,
+      "fetch": 23766,
+      "other": 165865,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 220
+    },
+    "title": "Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:53:55.749Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  "
+    ]
+   },
+   "tablet": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/",
+    "perf": {
+     "domContentLoaded": 1503,
+     "load": 1710,
+     "requests": 150,
+     "transferBytes": 1559495,
+     "decodedBytes": 5915396,
+     "byType": {
+      "script": 870225,
+      "img": 215645,
+      "css": 63668,
+      "beacon": 0,
+      "link": 73963,
+      "other": 166050,
+      "fetch": 23774,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 1376
+    },
+    "title": "Unity Dispatch",
+    "menuOpened": false,
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:54:13.030Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   },
+   "mobile": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/",
+    "perf": {
+     "domContentLoaded": 218,
+     "load": 640,
+     "requests": 155,
+     "transferBytes": 1465262,
+     "decodedBytes": 5951484,
+     "byType": {
+      "script": 886361,
+      "img": 76265,
+      "css": 81316,
+      "beacon": 0,
+      "link": 73139,
+      "fetch": 24870,
+      "other": 165865,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 148
+    },
+    "title": "Unity Dispatch",
+    "menuOpened": true,
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:54:52.119Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   }
+  },
+  "raw_desktop": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "HIT",
+    "cf-ray": "a4ec14980a517f2f-STL",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en-US",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:53:50 GMT",
+    "etag": "W/\"bef15767af6ddacfd3548b9c71cbdcbd\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_hit, dc;desc=cloudflare",
+    "set-cookie": "__cf_bm=akDRwfj9j7LcOovbQCBVLyff0895lLsZ9nyOSCRFbPE-1792709630.7224894-1.0.1.1-LSbFiAoudA6x3hanA5MLZqPFHeQAFxPSnE3ZMJ0ujrut2fIYRRtW9MvcgDqwJ8vSL7.qQj3OnunZ4CzfUPzbOK42JcS8RF3DloA0mKyUqy0iHgLu45KqT0UOLTyJaVz_; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:23:50 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,",
+    "x-served-by": "STL",
+    "x-wix-request-id": "1792709630.733291711326788854"
+   }
+  },
+  "raw_mobile": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "HIT",
+    "cf-ray": "a4ec14995d687f2f-STL",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "zh-CN",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:53:51 GMT",
+    "etag": "W/\"4257e506972f3ed35dc1616cd7b9c319\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=hit, varnish;desc=hit_hit, dc;desc=cloudflare",
+    "set-cookie": "__cf_bm=f2krMfV9oDhuAtB390Up4llTdMg5kFQoWiWjyNqpH7w-1792709630.9345717-1.0.1.1-CInDVuLidGFfGG6SgEDjjLRy.7u9aE5IdZZ7tGG29Y9XwzCdUMp3IuGzWqsRUEqyryqzOy5sIE1RrGfNoeR37rsgjFSYpUI05BbaPwz_Yi400nx9Zpkn_.0BPYzmCS_h; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:23:51 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,",
+    "x-served-by": "STL",
+    "x-wix-request-id": "1792709630.937981480536641707"
+   }
+  }
+ },
+ {
+  "url": "https://www.unitydispatch.net/refund-policy",
+  "key": "refund-policy",
+  "viewports": {
+   "desktop": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/refund-policy",
+    "perf": {
+     "domContentLoaded": 230,
+     "load": 383,
+     "requests": 130,
+     "transferBytes": 445245,
+     "decodedBytes": 5148768,
+     "byType": {
+      "script": 246442,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 44286,
+      "other": 0,
+      "fetch": 19702,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 160
+    },
+    "title": "Refund Policy | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:55:18.412Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  "
+    ]
+   },
+   "tablet": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/refund-policy",
+    "perf": {
+     "domContentLoaded": 1216,
+     "load": 1315,
+     "requests": 132,
+     "transferBytes": 186440,
+     "decodedBytes": 5148949,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 44206,
+      "other": 0,
+      "fetch": 7288,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 1176
+    },
+    "title": "Refund Policy | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:55:31.467Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   },
+   "mobile": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/refund-policy",
+    "perf": {
+     "domContentLoaded": 172,
+     "load": 285,
+     "requests": 135,
+     "transferBytes": 810526,
+     "decodedBytes": 5347838,
+     "byType": {
+      "script": 434467,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 45092,
+      "fetch": 19743,
+      "other": 166050,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 144
+    },
+    "title": "Refund Policy | Unity Dispatch",
+    "menuOpened": true,
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:56:09.506Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   }
+  },
+  "raw_desktop": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/refund-policy",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "HIT",
+    "cf-ray": "a4ec16998cfe9961-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en-US",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:55:12 GMT",
+    "etag": "W/\"e5d0905d2a28a50f238dac9d7ce7205a\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_hit, dc;desc=cloudflare",
+    "set-cookie": "__cf_bm=649jS90Jy4rwtMVjrWxWuDkQg.7K_rq3LOVDydS2A3g-1792709712.8858616-1.0.1.1-GMAR_kPICZgVBlkkWH6F5TSGXZzVNxgAAHa_n3LNtbqnyCsx.8PJjDcgidk84HEitC6_1JP5ShOppTeMLFYZP2BoQQMRwsAsZaMQWbk3DYEfe187g_LXp59MhpC22vgA; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:25:12 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792709712.897818049200291544"
+   }
+  },
+  "raw_mobile": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/refund-policy",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec169a3ed19961-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:55:14 GMT",
+    "etag": "W/\"a3d41a77c829bf723a8005e1124f7500\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=JiPnAkQVYXHATILvv.CyMR2qY.ja2bp5pEcayeZUglU-1792709712.997036-1.0.1.1-K2SdQ08wutEsB6ntdB5cvQhY_3oXOJPYm5KargltckJsojnQc9CZOcEBLV.VOrbNY6li89AL1NGJOyBHWP4kZH5O.5foTE40fxbI8XB62GpdWvwZzUuaJA_eKbKq8jqb; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:25:14 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,vmPhUNXuQemvc7fjBI8NWewfbs+7qUVAqsIx00yI78k=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N6HseacXrGIIpGEGukyOv3mU8eRCTqMHaOmckkNF/TgeEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3iirfv3BFEVzZW910rMKeNv,2d58ifebGbosy5xc+FRaloepn33M+ojd0siAN2591hITZmKyuTAhetqzmzxF8qlem32TqV+ZdKD2/X6bKCmgxu30v3gbA52WwuAvCCkRS20=,2UNV7KOq4oGjA5+PKsX47FtSaLg8IYZ7tWb3E4MS5QwFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMj+Y1BNE+QSPFNZUbkwCIyg=,8+sd0p/fB+2vxlJZapYbK9MNinJ5w6jYl9cPL7SVKB0j6r0AZAMucqm4C7kwBEya9+1j3l2QFbjQ0/n4OpthTA==,/B3VgDtICCNDWQOEWfZmMvljv+of9gK5x+FyZWd0PN8=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH84pict8BEMBZZckRA7GOjJW5+H7az5ELxDftDTRIXbQziin0bz1desTIABLkETcAs=,/B3VgDtICCNDWQOEWfZmMlFc66Ue0s+ey2jzdkd+s9M=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAOKie/ZinpaXrXtR3KuITrEMbn0G4csx8dTePzdnurCX96fxIgBYHW4BjNdyn4fnBY=",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792709713.038911330131465"
+   }
+  }
+ },
+ {
+  "url": "https://www.unitydispatch.net/privacy-policy",
+  "key": "privacy-policy",
+  "viewports": {
+   "desktop": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/privacy-policy",
+    "perf": {
+     "domContentLoaded": 162,
+     "load": 268,
+     "requests": 131,
+     "transferBytes": 806814,
+     "decodedBytes": 5153237,
+     "byType": {
+      "script": 441090,
+      "img": 0,
+      "beacon": 0,
+      "css": 0,
+      "link": 44744,
+      "fetch": 19679,
+      "other": 166050,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 120
+    },
+    "title": "Privacy Policy | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:56:19.540Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  "
+    ]
+   },
+   "tablet": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/privacy-policy",
+    "perf": {
+     "domContentLoaded": 1243,
+     "load": 1357,
+     "requests": 131,
+     "transferBytes": 187289,
+     "decodedBytes": 5152960,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 44789,
+      "other": 0,
+      "fetch": 7275,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 1212
+    },
+    "title": "Privacy Policy | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:57:05.828Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   },
+   "mobile": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/privacy-policy",
+    "perf": {
+     "domContentLoaded": 259,
+     "load": 380,
+     "requests": 137,
+     "transferBytes": 198192,
+     "decodedBytes": 5351305,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 45555,
+      "other": 0,
+      "fetch": 7339,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 228
+    },
+    "title": "Privacy Policy | Unity Dispatch",
+    "menuOpened": true,
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:57:44.139Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   }
+  },
+  "raw_desktop": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/privacy-policy",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec1811af19323c-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:56:14 GMT",
+    "etag": "W/\"30eb8973897938957d41bd87edae2081\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=8O_RIlZddtYCXLPQSCHNzKMTBL5BthE9Qjg9TOAf290-1792709773.0710552-1.0.1.1-4Y6LDKVsUfyobicl9l2iyu7S0._x_tWVj4S2em1u01nQKHVtoJbPKhWHMrr4twYbiDqOmCo2qzY1IoAqxWQL.EaKLAzkwJrGPZUGEjr4uCsomXGxYMDgH9qfzBhp6vO7; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:26:14 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N2l/aVItV9pQphSKUi4sYfqfspk23QInqko8xBiK+F8IEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3ir5Nb4Q+Sj+JLes2wLLUgk,2d58ifebGbosy5xc+FRallkRaPP8iRbs4G5qeZOttcvi8YtaYz8kcNWJtuXdYLCwm32TqV+ZdKD2/X6bKCmgxvnfAbFLskTjO7y3Z4f/v+g=,2UNV7KOq4oGjA5+PKsX47O46TMzs8fDlsGfnVzqK07gFVd1lR1L8/yRoc88kq/ej,2UNV7KOq4oGjA5+PKsX47Efm2FDoAuZ3d2dZFPgraZgFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMgUmU3KQUZuF+D2j0nhmXck=,8+sd0p/fB+2vxlJZapYbKzi2GJAlc2Pu0Nl3QQeLBoMj6r0AZAMucqm4C7kwBEyayN87Q4/RqdclZDenw2JI+g==,/B3VgDtICCNDWQOEWfZmMj2k0p+UNfUwFyUshHoneeE=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH+XSGc525v4D40VWvknEDBkJRZacgR0qc5NkmUCZiQn3u/CMX4o0m0w0i8CRiiLOwk=,/B3VgDtICCNDWQOEWfZmMmcCZfeEU6V7l2igm4RuG1s=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAPYA+wHlYam9StiqD88/DFjQqFW691d3uYnPT7jqpT89AjjVM2S23saUtzxGWlBfeo=",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792709773.1021077587931471"
+   }
+  },
+  "raw_mobile": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/privacy-policy",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec18199c28323c-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:56:15 GMT",
+    "etag": "W/\"9a61e93ff1375f67df9616423d2794e9\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=am_qSLG_R9v2wJM7SJbSQXIcUpwt2YxURk40KrVmHK0-1792709774.3373103-1.0.1.1-dXbBDiUAhLdW6SlDihpecFU4obhg28FGd7T1DniiwWGvxBdAv0nRBJDCOUjFNt.iRhpq1G72TK728Ccpdx.uWqlAvILi7Yw9lCcGqxfh2rVv1c54jbT8wmgcvp4VXnsG; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:26:15 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N3bnL/CMIAJakww3dqEXN93ozX3wCGHWz0MkRFgm99ppEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3ieFuYXqvxqlu3uoOK42PSH,2d58ifebGbosy5xc+FRalhxDVABK5W0jv7igHt4QzBKtVxKEdGnEjjnW/HMfBuWwm32TqV+ZdKD2/X6bKCmgxjiRsBAnj1oRG/9RF9ZlNek=,2UNV7KOq4oGjA5+PKsX47Efm2FDoAuZ3d2dZFPgraZgFVd1lR1L8/yRoc88kq/ej,2UNV7KOq4oGjA5+PKsX47G86grxW7YVbTxNaQeYTCEMFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMmkRiSNVJ/1CZ1nK+48QaeM=,8+sd0p/fB+2vxlJZapYbK3YzkySlosRg0eHnzKytjegj6r0AZAMucqm4C7kwBEyalf3dmFHAJCwnlmQleDJ35A==,/B3VgDtICCNDWQOEWfZmMvljv+of9gK5x+FyZWd0PN8=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH/2g4bS+Mxfje2GOA3xG5WPW5+H7az5ELxDftDTRIXbQ8PB4R/e2fLKxH0hFI6FK3g=,/B3VgDtICCNDWQOEWfZmMonPMY81nNXAQm5erR44QaQ=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOANKKVZGaCjxtUfHnM9S9tkqTfl9r0bGeGiv6KjK/ejj1dyIbHWL1WXmWi4rMMGx36E=",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792709774.376983844041469"
+   }
+  }
+ },
+ {
+  "url": "https://www.unitydispatch.net/terms-and-conditions",
+  "key": "terms-and-conditions",
+  "viewports": {
+   "desktop": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/terms-and-conditions",
+    "perf": {
+     "domContentLoaded": 338,
+     "load": 455,
+     "requests": 132,
+     "transferBytes": 187628,
+     "decodedBytes": 5154567,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 44971,
+      "other": 0,
+      "fetch": 7261,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 284
+    },
+    "title": "Terms & Conditions | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:58:09.551Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  "
+    ]
+   },
+   "tablet": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/terms-and-conditions",
+    "perf": {
+     "domContentLoaded": 1193,
+     "load": 1310,
+     "requests": 131,
+     "transferBytes": 147074,
+     "decodedBytes": 5154123,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 4390,
+      "other": 0,
+      "fetch": 7277,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 1160
+    },
+    "title": "Terms & Conditions | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:58:55.711Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   },
+   "mobile": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/terms-and-conditions",
+    "perf": {
+     "domContentLoaded": 304,
+     "load": 417,
+     "requests": 137,
+     "transferBytes": 156914,
+     "decodedBytes": 5352958,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 4230,
+      "other": 0,
+      "fetch": 7343,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 240
+    },
+    "title": "Terms & Conditions | Unity Dispatch",
+    "menuOpened": true,
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T22:59:34.098Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   }
+  },
+  "raw_desktop": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/terms-and-conditions",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec1abf9c63e0bb-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:58:04 GMT",
+    "etag": "W/\"ace9bc0a03f7d6463b768970faae7dbc\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=hqEdwuCeIya7GHLSe7MT1Kipf2ufIBAXgpTuRyjiEwI-1792709882.8133287-1.0.1.1-UDvm3Dw9g5o2aKAR8lMfwC_4r3Na4HjoSkut9u5hw.F39Naln2JjtoWC.A4u.aiKP4BPZEqthqEh1dRJBJTJJvuya38izbqZq14WhkaNfrNGn2iu0YVTI.qSSua1ccWw; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:28:04 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,VtqAe8Wu9wvSsl49B/X4+ewfbs+7qUVAqsIx00yI78k=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N6HseacXrGIIpGEGukyOv3mU8eRCTqMHaOmckkNF/TgeEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3iirfv3BFEVzZW910rMKeNv,2d58ifebGbosy5xc+FRaljysmCu/oASAAdJuNc6adaZhOUKQj1R16JqxDNMI25LAm32TqV+ZdKD2/X6bKCmgxjiRsBAnj1oRG/9RF9ZlNek=,2UNV7KOq4oGjA5+PKsX47G86grxW7YVbTxNaQeYTCEMFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMovDrhpFuTUjMfMkNslGAlY=,8+sd0p/fB+2vxlJZapYbKzzpSfDQ9GLHd56zO7/nGEEj6r0AZAMucqm4C7kwBEyat+vTs/O8Y2RGXqcg8qAMaw==,/B3VgDtICCNDWQOEWfZmMklMTfNk97RsCzWlkGLG1sY=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH/ls2Wq1aTN5m5VnRVyk+ecCgmAu/9IvfjTXU5t9yX6LbIJM9jxBu7e/okBBqktNl8=,/B3VgDtICCNDWQOEWfZmMjcOIalxewE7fKkKRxUnzvI=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAPV8SRXIOCVbWQMznUn+MHdGJuq7VzuHyMsZAP5o9Ru0GWOZMAUB91B2FPLwJnMGio=",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792709882.858919935761468"
+   }
+  },
+  "raw_mobile": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/terms-and-conditions",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec1ac7f9d2e0bb-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 22:58:05 GMT",
+    "etag": "W/\"bf5a812095c5520dae9bc407d544a7ff\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=v3hJRv9i28o.b39Ycbnn5mCeT3qKBJRn6KPMVf0F0So-1792709884.1566172-1.0.1.1-pCi2HMHVMHbyOahlZzYf78xixBEomC5JEryGfVChSBMXs6wQt.kwcUhqHJ5TU7FscCQAOSJu77WNIWp6gL9ytDT7TFQRt9cnPAZ9D5JZVFgCGyDDmGTAQSnBL9dPXFrt; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:28:05 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N2zU5MhQwgzuq9F8ZZid+QloKgaJhEosAO4nG/JunRUNEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3ib+6VEmPRil8hck6YdnwCH,2d58ifebGbosy5xc+FRalv3QMQWVHTHwRXAqvES18vAADVnN9/5W7+a05IpK5zHYm32TqV+ZdKD2/X6bKCmgxiu5SDBV3O3aFqgUYjD445o=,2UNV7KOq4oGjA5+PKsX47KEA/q0qujTnFdLk61L10h4FVd1lR1L8/yRoc88kq/ej,2UNV7KOq4oGjA5+PKsX47Bf7Kcd8QXJSMUhfvzFmjzQFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMkj1KUW0OqGlpkPHRMtanv4=,8+sd0p/fB+2vxlJZapYbK6YP4DhY7cQAYVFutFTI0Rcj6r0AZAMucqm4C7kwBEyaMMO4JxDMAAlzNvsYbo6XTw==,/B3VgDtICCNDWQOEWfZmMjcOIalxewE7fKkKRxUnzvI=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH9QkllOkOsRQyCSGTVq6rTlgXpjyQijhKNhr3lGAaWnRL9wEyxW7o7lDnrnppwql4c=,/B3VgDtICCNDWQOEWfZmMmcCZfeEU6V7l2igm4RuG1s=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAOk5ITVI34l6acWxaT/Ihj69gKMgv01oNf/VQrRyX+0BB9slopJdhD+WySraMrpIY8=",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792709884.190955876411472"
+   }
+  }
+ },
+ {
+  "url": "https://www.unitydispatch.net/shipping-policy",
+  "key": "shipping-policy",
+  "viewports": {
+   "desktop": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/shipping-policy",
+    "perf": {
+     "domContentLoaded": 334,
+     "load": 439,
+     "requests": 133,
+     "transferBytes": 146227,
+     "decodedBytes": 5150698,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "beacon": 0,
+      "css": 0,
+      "link": 3878,
+      "other": 0,
+      "fetch": 7268,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 308
+    },
+    "title": "Shipping Policy | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T23:00:17.523Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  "
+    ]
+   },
+   "tablet": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/shipping-policy",
+    "perf": {
+     "domContentLoaded": 1225,
+     "load": 1336,
+     "requests": 132,
+     "transferBytes": 146306,
+     "decodedBytes": 5150081,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 3878,
+      "other": 0,
+      "fetch": 7284,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 1172
+    },
+    "title": "Shipping Policy | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T23:01:03.631Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   },
+   "mobile": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/shipping-policy",
+    "perf": {
+     "domContentLoaded": 234,
+     "load": 337,
+     "requests": 137,
+     "transferBytes": 156062,
+     "decodedBytes": 5348909,
+     "byType": {
+      "script": 0,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 3716,
+      "other": 0,
+      "fetch": 7340,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 200
+    },
+    "title": "Shipping Policy | Unity Dispatch",
+    "menuOpened": true,
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T23:01:41.748Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   }
+  },
+  "raw_desktop": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/shipping-policy",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec1ddfce85e0bb-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 23:00:12 GMT",
+    "etag": "W/\"7ae4d728ea22a5171ecadcf81e3ef343\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=ibLoK_XVx5v6i3sqeesO.7ifbdV5WzxqihYQdIsVGJo-1792710010.8432765-1.0.1.1-HJs4ZNf6zIRZQCXMKUenW3aafHv_XW8gh6UoZG9fZWYVp73LX16ykh78NVQ9uIsvc6aC3NzPVh1gwug7qY9Nj53rqUPBnhF79rLWjI5sYIaoZZZ2wNfBC1UN1.yj9vFT; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:30:12 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,oDbbMvfdXCdtsgjD2KgaM8iHE4dbw+wewoJ5nvKoyjE=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N2zU5MhQwgzuq9F8ZZid+QloKgaJhEosAO4nG/JunRUNEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3ib+6VEmPRil8hck6YdnwCH,2d58ifebGbosy5xc+FRallkRaPP8iRbs4G5qeZOttcvi8YtaYz8kcNWJtuXdYLCwm32TqV+ZdKD2/X6bKCmgxvnfAbFLskTjO7y3Z4f/v+g=,2UNV7KOq4oGjA5+PKsX47FtSaLg8IYZ7tWb3E4MS5QwFVd1lR1L8/yRoc88kq/ej,2UNV7KOq4oGjA5+PKsX47G86grxW7YVbTxNaQeYTCEMFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMj+Y1BNE+QSPFNZUbkwCIyg=,8+sd0p/fB+2vxlJZapYbK0L+C2rN7TWcRSYZXzjS1IIj6r0AZAMucqm4C7kwBEyaentXPukBdnqqYmOd08hASg==,/B3VgDtICCNDWQOEWfZmMjn6liIMIoXkfYqNu6nhTGk=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH9qTpqxRsbOVJkp812iOhAFGcUuLFLwdk2BN5HzW4byOylKU94AZYxlhagkvIFG18w=,/B3VgDtICCNDWQOEWfZmMjcOIalxewE7fKkKRxUnzvI=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAPXwzBetWmI7Mn9VN1D1p1K75S63388cGR+cTk4k1RpPh9slopJdhD+WySraMrpIY8=",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792710010.876962419641466"
+   }
+  },
+  "raw_mobile": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/shipping-policy",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec1de76dfce0bb-DTW",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 23:00:12 GMT",
+    "etag": "W/\"2f5d62a754115f0ca32de5997d7f21b1\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=zEyMIPntrpb1pH2txmQcVBoJHjjKtkFCEHWLV7A2w0s-1792710012.0642827-1.0.1.1-DHWQ3hEF.NBbZM8T2M5tH7AQchSmw.l9Y4CkjQluYdf7B6C9Wqutv_JPXMJx_V00DX5cpAn.hfTzL1bV9PULzQCo2yfcXOorQBhjeCh6oUTP9qbrBtnye.59WBGerFwO; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:30:12 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,AHc3TXLcXOul+t9LIbGg9ciHE4dbw+wewoJ5nvKoyjE=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N5fJscTDfdc451cWsbt1+wwBVvG9omOl3RUlaJbIaSeVEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3g+39vVmdVgyo7u27qJidUJ,2d58ifebGbosy5xc+FRaluuY9bV8wfuiLFtzusIX/XhZwu4KL7g3atDSyTdVMHnsm32TqV+ZdKD2/X6bKCmgxiTguHjzPi2YlN4/WxOeY6w=,2UNV7KOq4oGjA5+PKsX47KEA/q0qujTnFdLk61L10h4FVd1lR1L8/yRoc88kq/ej,2UNV7KOq4oGjA5+PKsX47O46TMzs8fDlsGfnVzqK07gFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMovDrhpFuTUjMfMkNslGAlY=,8+sd0p/fB+2vxlJZapYbKzi2GJAlc2Pu0Nl3QQeLBoMj6r0AZAMucqm4C7kwBEyayN87Q4/RqdclZDenw2JI+g==,/B3VgDtICCNDWQOEWfZmMjn6liIMIoXkfYqNu6nhTGk=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH9HDabFw02LUCxHElS21hZ/gtIWsvswDMw9hS3ROnyo+B82mMXdfep28BMNlS5wsiw=,/B3VgDtICCNDWQOEWfZmMjn6liIMIoXkfYqNu6nhTGk=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAOasXFB1kWgdA9h63BIB35C07nj8PFWMor42MScFWFMZQRTYzUU5kILeQcDJiFRtNA=",
+    "x-served-by": "DTW",
+    "x-wix-request-id": "1792710012.0969607319101464"
+   }
+  }
+ },
+ {
+  "url": "https://www.unitydispatch.net/accessibility",
+  "key": "accessibility",
+  "viewports": {
+   "desktop": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/accessibility",
+    "perf": {
+     "domContentLoaded": 213,
+     "load": 339,
+     "requests": 131,
+     "transferBytes": 151670,
+     "decodedBytes": 5203575,
+     "byType": {
+      "script": 1497,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 5715,
+      "other": 0,
+      "fetch": 7275,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 168
+    },
+    "title": "Accessibility | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T23:02:24.563Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  "
+    ]
+   },
+   "tablet": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/accessibility",
+    "perf": {
+     "domContentLoaded": 1245,
+     "load": 1343,
+     "requests": 132,
+     "transferBytes": 151737,
+     "decodedBytes": 5202987,
+     "byType": {
+      "script": 1497,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 5715,
+      "other": 0,
+      "fetch": 7296,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 1204
+    },
+    "title": "Accessibility | Unity Dispatch",
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T23:02:37.893Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   },
+   "mobile": {
+    "status": 200,
+    "finalUrl": "https://www.unitydispatch.net/accessibility",
+    "perf": {
+     "domContentLoaded": 207,
+     "load": 312,
+     "requests": 137,
+     "transferBytes": 161434,
+     "decodedBytes": 5402596,
+     "byType": {
+      "script": 1497,
+      "img": 0,
+      "css": 0,
+      "beacon": 0,
+      "link": 5609,
+      "other": 0,
+      "fetch": 7340,
+      "xmlhttprequest": 851,
+      "iframe": 0
+     },
+     "fcp": 168
+    },
+    "title": "Accessibility | Unity Dispatch",
+    "menuOpened": true,
+    "console": [
+     "warning: Unrecognized feature: 'vr'.",
+     "warning: react-i18next:: It seems you are still using the old wait option, you may migrate to the new useSuspense behaviour.",
+     "warning: [2026-10-22T23:03:16.186Z]  @firebase/app-compat: \n    Warning: Firebase is already defined in the global scope. Please make sure\n    Firebase library is only loaded once.\n  ",
+     "warning: Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (engage.wixapps.net) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab."
+    ]
+   }
+  },
+  "raw_desktop": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/accessibility",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec20fc5e4bf53a-ORD",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 23:02:19 GMT",
+    "etag": "W/\"4b044086423c2c6fc42aa6e093cf89dc\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=1wqEMI0PMULhtVudHd8EL3wKT_7eTh.ZM0YdkBzugH8-1792710138.2987869-1.0.1.1-c0MIPcVUkzhXl94H5ELRxX49zeY03LF4MhFDccfF5pLdWP9fn5BeJiBHV6ifc_dT6phW4ZIBSayDR6pxxWKOdG2idnXZKKnwjUdkCQM8awDVhFIV2n3Y3p3KoDxU35Ot; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:32:19 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,pmHZlB45NPy7b1VBAukQrewfbs+7qUVAqsIx00yI78k=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N6xiHO9TJ4D0xlKCBSB868tJSZlScvIwqcGpGU28jpWNEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3juJmwjw03inS1b6iulG4H3,2d58ifebGbosy5xc+FRalkk5o5/NvEVxfgwfVFocGUCVMNXuwradM79lu1vjeK/Gm32TqV+ZdKD2/X6bKCmgxpP0d6xUjD6N+Od87x3o/40=,2UNV7KOq4oGjA5+PKsX47KEA/q0qujTnFdLk61L10h4FVd1lR1L8/yRoc88kq/ej,2UNV7KOq4oGjA5+PKsX47FtSaLg8IYZ7tWb3E4MS5QwFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMnTQ21uuObazPsRuUO2lI10=,8+sd0p/fB+2vxlJZapYbKzOfFIFhd6GY1WQYkz4oW1Ij6r0AZAMucqm4C7kwBEya5Wn7N/Kbzi0U0sEtBc6VvQ==,/B3VgDtICCNDWQOEWfZmMklMTfNk97RsCzWlkGLG1sY=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH/ls2Wq1aTN5m5VnRVyk+ecCgmAu/9IvfjTXU5t9yX6LbIJM9jxBu7e/okBBqktNl8=,/B3VgDtICCNDWQOEWfZmMklMTfNk97RsCzWlkGLG1sY=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAMRwexar5JF7OuuqI3HZn94oJq498CwcpUZjJUAOFSFkAr0+a0YP/djhVhUbiKIP6s=",
+    "x-served-by": "ORD",
+    "x-wix-request-id": "1792710138.3361065633211471"
+   }
+  },
+  "raw_mobile": {
+   "status": 200,
+   "finalUrl": "https://www.unitydispatch.net/accessibility",
+   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public,max-age=0,must-revalidate",
+    "cf-cache-status": "MISS",
+    "cf-ray": "a4ec21027f8df53a-ORD",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-language": "en",
+    "content-type": "text/html; charset=UTF-8",
+    "date": "Thu, 22 Oct 2026 23:02:20 GMT",
+    "etag": "W/\"ed40b47dce18172e5727bcfb73eda538\"",
+    "link": "<https://static.parastorage.com/>; rel=preconnect; crossorigin, <https://static.parastorage.com/>; rel=preconnect, <https://static.wixstatic.com/>; rel=preconnect; crossorigin, <https://static.wixstatic.com/>; rel=preconnect, <https://siteassets.parastorage.com>; rel=preconnect; crossorigin",
+    "server": "cloudflare",
+    "server-timing": "cache;desc=miss, varnish;desc=miss_miss, dc;desc=cloudflare_virginia-phy",
+    "set-cookie": "__cf_bm=WAM_E1nadI8oM4QIMfbKRs69zkgmFEJbog9nPDN6EPc-1792710139.2765048-1.0.1.1-dZMXHVUr5w8YJHrHQsxKMjb4.2C1pWn7oXJxtuLvCtq4BWBaAf3tdj96PiSx2IGaX36sDfg.IYA.wM9gXnli503Xn4K5Z1kP4hzwM8tPDY3X_vl_PgSSX_M9YtuHiGlm; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:32:20 GMT",
+    "strict-transport-security": "max-age=31556952",
+    "transfer-encoding": "chunked",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,bQAXdg/f3pWGCb3VI6q72A==,VtqAe8Wu9wvSsl49B/X4+ewfbs+7qUVAqsIx00yI78k=,jKB0KR2wTEE1MYSdxvKSbciHE4dbw+wewoJ5nvKoyjE=,Ua1iSBCTq7qSXjmRCGE1N6xiHO9TJ4D0xlKCBSB868tJSZlScvIwqcGpGU28jpWNEpzrUii78VdYxnNKzUeyUYhIydfYCelFDfkrvUteY3juJmwjw03inS1b6iulG4H3,2d58ifebGbosy5xc+FRalkONaglAtArXRmgacxrJA9795kgVuDtZ4ElIcamFA2iSm32TqV+ZdKD2/X6bKCmgxumqUyob5qdhjU+O2xrmXfQ=,2UNV7KOq4oGjA5+PKsX47KEA/q0qujTnFdLk61L10h4FVd1lR1L8/yRoc88kq/ej,2UNV7KOq4oGjA5+PKsX47O46TMzs8fDlsGfnVzqK07gFVd1lR1L8/yRoc88kq/ej,/B3VgDtICCNDWQOEWfZmMgUmU3KQUZuF+D2j0nhmXck=,8+sd0p/fB+2vxlJZapYbK3QWldmh0K3uI27lwmzUWKcj6r0AZAMucqm4C7kwBEyaMWK4cr09V7g++eiia9BG5A==,/B3VgDtICCNDWQOEWfZmMmcCZfeEU6V7l2igm4RuG1s=,LoUK8/saGAmOxZWtpubo2nlSZq6u/a3lw2N20b+MSH881FlSuiTXKUS/3+L/h7jo5aQJTt/AMuGITuXn4knKw/fMGEiy46ilEO2vP3flRyM=,/B3VgDtICCNDWQOEWfZmMtdpZPV00gsCI48HmKzRPJs=,/a5ccLSK1HEmwPNg/x6OusKYg7g3BTeOlM/I/3BZOAO6UYNSxltOI6sKuX3QgFlQ9gKMgv01oNf/VQrRyX+0BFZ3fGeIyyvUeOuzMoa8zOs=",
+    "x-served-by": "ORD",
+    "x-wix-request-id": "1792710139.3291065589531462"
+   }
+  }
+ }
+]

@@ -1,0 +1,13 @@
+{
+  "kind": "identitytoolkit#GetAccountInfoResponse",
+  "users": [
+    {
+      "localId": "3b3224ee-3846-4974-b9d7-840bd98078bc",
+      "validSince": "1792709653",
+      "lastLoginAt": "1792709653181",
+      "createdAt": "1792709653181",
+      "customAuth": true,
+      "lastRefreshAt": "2026-10-22T22:54:13.181Z"
+    }
+  ]
+}

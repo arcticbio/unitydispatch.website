@@ -1,0 +1,25 @@
+{
+ "status": 200,
+ "url": "https://www.unitydispatch.net/robots.txt",
+ "headers": {
+  "alt-svc": "h3=\":443\"; ma=86400",
+  "cache-control": "public,max-age=0,must-revalidate",
+  "cf-cache-status": "HIT",
+  "cf-ray": "a4ec14914aec7f2f-STL",
+  "connection": "keep-alive",
+  "content-encoding": "br",
+  "content-type": "text/plain; charset=utf-8",
+  "date": "Thu, 22 Oct 2026 22:53:49 GMT",
+  "etag": "W/\"1ef-sPjhQfeL6ETqOxur4bLDc1tkU7I\"",
+  "server": "cloudflare",
+  "server-timing": "cache;desc=miss, varnish;desc=miss_hit, dc;desc=cloudflare",
+  "set-cookie": "__cf_bm=WN6aCSfYwGPJgU.9Jojg9Myd.Ehzxk_i098E.5hRfWU-1792709629.6441946-1.0.1.1-GUzCQJISbNvvuk5r3RTe.muJ2KrNLbSjXNna0uCQ9TIi_OSu76Vi8x_D6R13BGZjTbGWoFZEqEiDIeypaXZKWgD5qnQsLiCWZBIcGFJf6KgHzerYIhumluZtMl9JJ7cJ; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.unitydispatch.net; Expires=Thu, 22 Oct 2026 23:23:49 GMT",
+  "strict-transport-security": "max-age=31556952",
+  "transfer-encoding": "chunked",
+  "x-content-type-options": "nosniff",
+  "x-seen-by": "bQAXdg/f3pWGCb3VI6q72A==,",
+  "x-served-by": "STL",
+  "x-wix-request-id": "1792709629.657382462827183558"
+ },
+ "body": "User-agent: *\nAllow: /\nDisallow: *?lightbox=\n\n# Optimization for Google Ads Bot\nUser-agent: AdsBot-Google-Mobile\nUser-agent: AdsBot-Google\nDisallow: /_partials*\nDisallow: /pro-gallery-webapp/v1/galleries/*\n\n# Block PetalBot\nUser-agent: PetalBot\nDisallow: /\n\n# Crawl delay for overly enthusiastic bots\nUser-agent: dotbot\nCrawl-delay: 10\nUser-agent: AhrefsBot\nCrawl-delay: 10\n\nSitemap: https://www.unitydispatch.net/sitemap.xml\n\n# Auto generated, go to SEO Tools > Robots.txt Editor to change this"
+}

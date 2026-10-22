@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([["2865"],{37439(e,s,k){k.r(s),k.d(s,{default:()=>c,sdk:()=>t});var l=k(59777),u=k(52394);let a=(0,l.lI)(),t=(0,u.X)([a]),c=t}}]);
+//# sourceMappingURL=Fallback.corvid.167da7c1.chunk.min.js.map

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="20 20 160 160" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" height="200" width="200" data-type="color">
+    <g fill-rule="evenodd">
+        <path fill-rule="nonzero" fill="#FFFFFF" d="M180 100c0 44.183-35.817 80-80 80s-80-35.817-80-80 35.817-80 80-80 80 35.817 80 80z" data-color="1"/>
+        <path fill="#566FB8" d="M63.412 114L60 109.649 100.034 78 140 109.652 136.584 114l-36.55-28.3L63.412 114z" data-color="2"/>
+        <path fill-rule="nonzero" fill="#6D8FF1" d="M100 24c-41.974 0-76 34.026-76 76s34.026 76 76 76 76-34.026 76-76-34.026-76-76-76zm0-4c44.183 0 80 35.817 80 80s-35.817 80-80 80-80-35.817-80-80 35.817-80 80-80z" data-color="3"/>
+    </g>
+</svg>
