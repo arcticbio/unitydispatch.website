@@ -1,0 +1,75 @@
+name: Capture live site
+
+# Temporary tooling for the static rebuild: snapshots the current production
+# site (HTML, assets, screenshots, computed layout) into _capture/ so the
+# rebuild can be compared against it. Removed once the rebuild is done.
+on:
+  push:
+    branches: [claude/practical-hawking-mdth5a]
+    paths:
+      - tools/capture/**
+      - .github/workflows/capture-site.yml
+  workflow_dispatch:
+    inputs:
+      start_url:
+        description: URL to start crawling from
+        default: https://www.unitydispatch.net/
+
+permissions:
+  contents: write
+
+concurrency:
+  group: capture-site
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      START_URL: ${{ inputs.start_url || 'https://www.unitydispatch.net/' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: DNS and HTTP diagnostics
+        run: |
+          mkdir -p _capture
+          {
+            for h in unitydispatch.net www.unitydispatch.net; do
+              echo "### dig $h"
+              dig +noall +answer "$h" A || true
+              dig +noall +answer "$h" CNAME || true
+              dig +noall +answer "$h" NS || true
+              echo "### curl -sIL https://$h/"
+              curl -sSIL --max-time 30 -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/129.0 Safari/537.36' "https://$h/" || true
+              echo
+            done
+          } 2>&1 | tee _capture/diag.txt
+          { echo '```'; cat _capture/diag.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Install Playwright
+        working-directory: tools/capture
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Crawl site
+        working-directory: tools/capture
+        continue-on-error: true
+        run: OUT_DIR=../../_capture node capture.mjs 2>&1 | tee ../../_capture/crawl.log
+
+      - name: Commit capture
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A _capture
+          git commit -q -m "Capture live site snapshot [skip ci]" || exit 0
+          for i in 1 2 3; do
+            git pull --rebase -q origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME" && break
+            sleep 5
+          done
