@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            api/package-lock.json
+
+      - name: Install tooling
+        run: npm ci
+
+      - name: Check site/ is built from src/
+        run: |
+          node scripts/build.mjs
+          git diff --exit-code -- site || { echo "::error::site/ is out of date. Run 'npm run build' and commit the result."; exit 1; }
+
+      - name: API unit tests
+        working-directory: api
+        run: |
+          npm ci
+          npm test
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end checks
+        run: |
+          node scripts/serve.mjs > serve.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://localhost:4280/ > /dev/null && break; sleep 1; done
+          npm run test:e2e
