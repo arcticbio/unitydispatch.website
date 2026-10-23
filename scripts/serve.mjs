@@ -40,15 +40,13 @@ http.createServer(async (req, res) => {
     for await (const chunk of req) body += chunk;
     console.log('[api/contact]', req.method, body);
     if (args.api === 'real') {
-      const { handle } = createRequire(import.meta.url)('../api/src/lib/contact.js');
-      try {
-        await handle({ method: req.method, origin: req.headers.origin, body }, process.env);
-        res.writeHead(200, { 'content-type': 'application/json' });
-        res.end('{"ok":true}');
-      } catch (err) {
-        res.writeHead(err.status || 500, { 'content-type': 'application/json' });
-        res.end(JSON.stringify({ ok: false, error: err.message }));
-      }
+      const { respond } = createRequire(import.meta.url)('../api/src/lib/contact.js');
+      const out = await respond({
+        method: req.method, origin: req.headers.origin, referer: req.headers.referer, host: req.headers.host,
+        contentType: req.headers['content-type'], client: req.socket.remoteAddress, body,
+      }, process.env, undefined, console);
+      res.writeHead(out.status, out.headers || { 'content-type': 'application/json' });
+      res.end(out.jsonBody ? JSON.stringify(out.jsonBody) : '');
       return;
     }
     if (args['proxy-api']) {

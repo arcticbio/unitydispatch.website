@@ -299,6 +299,10 @@ section, .site-footer { position: relative; display: flow-root; }
 .form-status { margin-top: 12px; text-align: center; font-size: 16px; line-height: 1.75; min-height: 0; }
 .form-status:empty { display: none; }
 .form-status.is-error { color: #ffb3b3; }
+/* Shown after a plain form post (no JavaScript), when the API redirects back to #contact-sent / #contact-failed. */
+.form-notice { display: none; margin-top: 12px; text-align: center; scroll-margin-top: 50vh; }
+.form-notice:target { display: block; }
+.form-notice.is-error { color: #ffb3b3; }
 
 /* ---------- footer bar ---------- */
 .footer-bar { margin-bottom: 17px; }

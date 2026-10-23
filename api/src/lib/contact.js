@@ -5,6 +5,10 @@
 
 const MAX_BODY_BYTES = 20 * 1024;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const WEBHOOK_TIMEOUT_MS = 10000;
+const EMAIL_TIMEOUT_MS = 20000;
+// Per-client limit (per function instance): enough for any real visitor.
+const RATE_LIMIT = { max: 5, windowMs: 10 * 60 * 1000 };
 
 const LIMITS = {
   firstName: 100, lastName: 100, name: 100, email: 200, phone: 40,
@@ -20,15 +24,24 @@ class HttpError extends Error {
 
 const clean = (v) => (typeof v === 'string' ? v.replace(/\s+$/g, '').replace(/^\s+/g, '') : '');
 
-function parse(raw) {
+// Accepts JSON (sent by the site's script) or a plain form post (browsers without JavaScript).
+function parse(raw, contentType = 'application/json') {
   if (Buffer.byteLength(raw || '', 'utf8') > MAX_BODY_BYTES) throw new HttpError(413, 'Request too large.');
   let data;
-  try {
-    data = JSON.parse(raw);
-  } catch {
-    throw new HttpError(400, 'Request body must be JSON.');
+  if (/application\/x-www-form-urlencoded/i.test(contentType)) {
+    data = Object.fromEntries(new URLSearchParams(raw || ''));
+    // The no-JS form sends the phone country code separately.
+    if (data.phone && data.phoneCountry) data.phone = `${data.phoneCountry} ${data.phone}`;
+  } else {
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      throw new HttpError(400, 'Request body must be JSON.');
+    }
   }
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new HttpError(400, 'Request body must be a JSON object.');
+  // The honeypot field is always sent (empty) by the real form and chat.
+  const honeypotMissing = !Object.prototype.hasOwnProperty.call(data, 'website');
   const out = {};
   for (const [key, max] of Object.entries(LIMITS)) {
     const value = clean(data[key]);
@@ -36,7 +49,26 @@ function parse(raw) {
     out[key] = value;
   }
   out.source = out.source === 'chat' ? 'chat' : 'contact-form';
+  out.isBot = honeypotMissing || Boolean(out.website);
   return out;
+}
+
+const hits = new Map();
+function rateLimited(client, now = Date.now()) {
+  if (!client) return false;
+  const recent = (hits.get(client) || []).filter((t) => now - t < RATE_LIMIT.windowMs);
+  recent.push(now);
+  hits.set(client, recent);
+  if (hits.size > 5000) hits.clear();
+  return recent.length > RATE_LIMIT.max;
+}
+
+function withTimeout(promise, ms, what) {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`${what} timed out`)), ms); }),
+  ]).finally(() => clearTimeout(timer));
 }
 
 function validate(sub) {
@@ -60,7 +92,7 @@ function format(sub, now = new Date()) {
     '',
     `Submitted ${now.toISOString()} from ${sub.page || '/'} (${sub.source}).`,
   ].join('\n');
-  return { subject, text, replyTo: sub.email, submission: { ...sub, website: undefined, submittedAt: now.toISOString() } };
+  return { subject, text, replyTo: sub.email, submission: { ...sub, website: undefined, isBot: undefined, submittedAt: now.toISOString() } };
 }
 
 function allowedOrigin(origin, env) {
@@ -70,6 +102,7 @@ function allowedOrigin(origin, env) {
 
 async function deliver(msg, env, deps = {}) {
   const doFetch = deps.fetch || fetch;
+  const timeouts = { webhook: WEBHOOK_TIMEOUT_MS, email: EMAIL_TIMEOUT_MS, ...deps.timeouts };
   const channels = [];
 
   if (env.CONTACT_WEBHOOK_URL) {
@@ -78,13 +111,14 @@ async function deliver(msg, env, deps = {}) {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ subject: msg.subject, text: msg.text, replyTo: msg.replyTo, ...msg.submission }),
+        signal: AbortSignal.timeout(timeouts.webhook),
       });
       if (!res.ok) throw new Error(`webhook responded ${res.status}`);
     })());
   }
 
   if (env.ACS_CONNECTION_STRING && env.CONTACT_TO_EMAIL && env.CONTACT_FROM_EMAIL) {
-    channels.push((async () => {
+    channels.push(withTimeout((async () => {
       const EmailClient = deps.EmailClient || require('@azure/communication-email').EmailClient;
       const client = new EmailClient(env.ACS_CONNECTION_STRING);
       const poller = await client.beginSend({
@@ -95,7 +129,7 @@ async function deliver(msg, env, deps = {}) {
       });
       const result = await poller.pollUntilDone();
       if (result.status !== 'Succeeded') throw new Error(`email status ${result.status}`);
-    })());
+    })(), timeouts.email, 'email'));
   }
 
   if (!channels.length) throw new HttpError(503, 'The contact form is not configured yet.');
@@ -110,15 +144,44 @@ async function deliver(msg, env, deps = {}) {
   return { delivered: results.length - failed.length, failed: failed.map((f) => String(f.reason && f.reason.message || f.reason)) };
 }
 
-async function handle({ method, origin, body }, env, deps) {
+async function handle({ method, origin, body, contentType, client }, env, deps) {
   if (method !== 'POST') throw new HttpError(405, 'Method not allowed.');
   if (!allowedOrigin(origin, env)) throw new HttpError(403, 'Origin not allowed.');
-  const sub = parse(body);
-  // Honeypot: real visitors never fill the hidden "website" field.
-  if (sub.website) return { ok: true, skipped: true };
+  const sub = parse(body, contentType);
+  // Honeypot: bots fill in or omit the hidden "website" field. Pretend success.
+  if (sub.isBot) return { ok: true, skipped: true };
+  if (rateLimited(client)) throw new HttpError(429, 'Too many messages. Please try again later.');
   validate(sub);
   const result = await deliver(format(sub), env, deps);
   return { ok: true, ...result };
 }
 
-module.exports = { handle, parse, validate, format, deliver, HttpError };
+// Where to send a browser that posted the plain HTML form (no JavaScript):
+// back to the page it came from, at a notice the page shows via :target.
+function backTo(referer, host, notice) {
+  let path = '/';
+  try {
+    const url = new URL(referer || '');
+    if (url.host === host) path = url.pathname;
+  } catch { /* no or invalid referer */ }
+  return `${path}#${notice}`;
+}
+
+// Runs a submission and shapes the HTTP response: JSON for the site's script,
+// a 303 redirect back to the page for plain form posts.
+async function respond(req, env, deps, log = {}) {
+  const isFormPost = /application\/x-www-form-urlencoded/i.test(req.contentType || '');
+  try {
+    const result = await handle(req, env, deps);
+    if (result.failed && result.failed.length && log.warn) log.warn('Some delivery channels failed:', result.failed);
+    if (isFormPost) return { status: 303, headers: { location: backTo(req.referer, req.host, 'contact-sent') } };
+    return { status: 200, jsonBody: { ok: true } };
+  } catch (err) {
+    const status = err.status || 500;
+    if (status >= 500 && log.error) log.error('Contact submission failed:', err.message, err.causes || '');
+    if (isFormPost) return { status: 303, headers: { location: backTo(req.referer, req.host, 'contact-failed') } };
+    return { status, jsonBody: { ok: false, error: status >= 500 && status !== 503 ? 'The message could not be delivered.' : err.message } };
+  }
+}
+
+module.exports = { respond, handle, parse, validate, format, deliver, HttpError, _resetRateLimit: () => hits.clear() };

@@ -1,8 +1,9 @@
 name: Deploy to Azure Static Web Apps
 
 # Production deploys on pushes to main; pull requests get a preview
-# environment. Needs the AZURE_STATIC_WEB_APPS_API_TOKEN repository secret
-# (see README) and does nothing until it exists.
+# environment. CI (ci.yml) runs first and must pass. Needs the
+# AZURE_STATIC_WEB_APPS_API_TOKEN repository secret (see README) and does
+# nothing until it exists.
 
 on:
   push:
@@ -21,8 +22,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  ci:
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
+    uses: ./.github/workflows/ci.yml
+
+  deploy:
+    needs: ci
+    # Manual runs only deploy main; other branches would otherwise overwrite production.
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       SWA_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
@@ -44,6 +51,7 @@ jobs:
           api_location: api
           output_location: ""
           skip_app_build: true
+          production_branch: main
 
   close-preview:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

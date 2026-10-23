@@ -85,10 +85,10 @@ for (const f of (await fs.readdir(path.join(SRC, 'pages'))).sort()) {
   console.log('built', path.relative(ROOT, outFile));
 }
 
-const today = new Date().toISOString().slice(0, 10);
+// No <lastmod>: it is optional, and a build date would make every build differ.
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${built.map((p) => `  <url>\n    <loc>${ORIGIN}${p === '/' ? '' : p}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`).join('\n')}
+${built.map((p) => `  <url>\n    <loc>${ORIGIN}${p === '/' ? '' : p}</loc>\n  </url>`).join('\n')}
 </urlset>
 `;
 await fs.writeFile(path.join(OUT, 'sitemap.xml'), sitemap);

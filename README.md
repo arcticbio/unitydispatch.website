@@ -50,7 +50,8 @@ npm run test:e2e       # with the server running
 - **Add a page:** add `src/pages/<name>.html` with front matter (`title`, `path`, `bodyClass`)
   and a rewrite for its path in `src/staticwebapp.config.json`.
 - **Images:** the processed images are committed. `scripts/images.mjs` documents how they were
-  made from the originals.
+  made from the originals. Browsers cache images and fonts for a week, so when you replace one,
+  give the new file a new name rather than overwriting the old one.
 - **Inline scripts:** the Content-Security-Policy allows only the one inline script in
   `src/partials/head.html`, by hash. The build recomputes the hash. Adding analytics or another
   third-party script means adding its origin to `script-src`/`connect-src` in
@@ -59,8 +60,9 @@ npm run test:e2e       # with the server running
 ## Deploying to Azure Static Web Apps
 
 Deployment runs from GitHub Actions (`.github/workflows/azure-static-web-apps.yml`): every push to
-`main` deploys production, and every pull request into `main` gets its own preview URL. Until the
-secret in step 3 exists, the workflow skips deployment with a notice and doesn't fail.
+`main` deploys production, and every pull request into `main` gets its own preview URL. CI
+(build check, API tests, browser tests) runs first, and nothing deploys unless it passes. Until
+the secret in step 3 exists, the workflow skips deployment with a notice and doesn't fail.
 
 1. **Create `main`.** Merge this work into a `main` branch (for example, open a pull request from
    this branch, or create `main` from it). In GitHub *Settings → General*, make `main` the default
@@ -93,6 +95,10 @@ secret in step 3 exists, the workflow skips deployment with a notice and doesn't
 
    Until one of these is set, the form shows "Sorry, your message could not be sent. Please email
    info@unitydispatch.net." instead of losing the message silently.
+
+   Spam protection: a hidden honeypot field and a per-visitor rate limit (5 messages per
+   10 minutes). If spam still gets through, add Cloudflare Turnstile or a similar CAPTCHA to the
+   form and verify its token in `api/src/lib/contact.js`.
 5. **Test** the `*.azurestaticapps.net` site: submit the form and a chat message, and check they
    arrive.
 6. **Move the domain.** DNS for unitydispatch.net is on Cloudflare, currently pointing at Wix. In
@@ -128,6 +134,8 @@ Everything visible matches the original unless listed here.
   confirmation. Submissions go to `/api/contact` (see step 4) instead of Wix's inbox.
 - **Phone country picker.** A native country list (with flags once chosen) replaces Wix's custom
   dropdown.
+- **Without JavaScript** the pages still show all content, and the contact form still submits:
+  the API redirects back with a confirmation message.
 - **Tablets (768–979 px wide).** Wix showed the desktop layout with sideways scrolling; this site
   scales the desktop layout to fit.
 

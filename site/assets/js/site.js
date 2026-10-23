@@ -5,6 +5,8 @@
   'use strict';
 
   const root = document.documentElement;
+  // Tells the inline head script that this file loaded (it un-hides content otherwise).
+  window.udReady = true;
   const isPhone = window.matchMedia('(max-width: 767.98px)');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const CONTACT_ENDPOINT = '/api/contact';
@@ -13,6 +15,8 @@
   /* ---------- entrance animations: play once when an element enters the viewport ---------- */
   function initReveal() {
     const items = document.querySelectorAll('.fade, .fade-d, .fade-m, .float-d');
+    // If the head script already gave up on us (very slow load), content is visible: don't re-hide it.
+    if (!root.classList.contains('js')) return;
     if (!('IntersectionObserver' in window) || reduceMotion.matches) {
       items.forEach((el) => el.classList.add('is-in'));
       return;
@@ -62,7 +66,10 @@
   }
 
   function scrollTargetY(el) {
-    const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+    // scroll-margin is in unzoomed CSS px, while the rect reflects any CSS zoom
+    // (used to scale the desktop design on tablets).
+    const zoom = el.currentCSSZoom || 1;
+    const margin = (parseFloat(getComputedStyle(el).scrollMarginTop) || 0) * zoom;
     const y = el.getBoundingClientRect().top + window.scrollY - margin;
     return Math.max(0, Math.min(y, root.scrollHeight - window.innerHeight));
   }
@@ -331,16 +338,35 @@
     chat.querySelector('.chat__close').addEventListener('click', close);
     panel.addEventListener('keydown', (event) => { if (event.key === 'Escape') close(); });
 
+    // Sends queued messages one request at a time, each under the API's 4000
+    // character limit. A message leaves the queue once it has been attempted,
+    // so a rejected request can't poison later ones.
+    const MAX_CHARS = 4000;
+    let sending = false;
     const send = async () => {
-      const text = state.pending.join('\n');
-      try {
-        await postContact({ source: 'chat', page: location.pathname, name: state.contact.name, email: state.contact.email, message: text });
-        state.pending = [];
+      if (sending) return;
+      sending = true;
+      let sent = false;
+      let failed = false;
+      while (state.pending.length) {
+        const batch = [];
+        let length = 0;
+        while (state.pending.length > batch.length && (!batch.length || length + 1 + state.pending[batch.length].length <= MAX_CHARS)) {
+          length += (batch.length ? 1 : 0) + state.pending[batch.length].length;
+          batch.push(state.pending[batch.length]);
+        }
+        try {
+          await postContact({ source: 'chat', page: location.pathname, name: state.contact.name, email: state.contact.email, message: batch.join('\n').slice(0, MAX_CHARS), website: '' });
+          sent = true;
+        } catch {
+          failed = true;
+        }
+        state.pending.splice(0, batch.length);
         save();
-        say('them', 'Thanks! We received your message and will get back to you soon.');
-      } catch {
-        say('them', `Sorry, your message could not be sent. Please email ${FALLBACK_EMAIL}.`);
       }
+      sending = false;
+      if (failed) say('them', `Sorry, your message could not be sent. Please email ${FALLBACK_EMAIL}.`);
+      else if (sent) say('them', 'Thanks! We received your message and will get back to you soon.');
     };
 
     const autosize = () => {
@@ -349,6 +375,8 @@
     };
     textarea.addEventListener('input', autosize);
     textarea.addEventListener('keydown', (event) => {
+      // Don't send while an input method (e.g. Japanese/Chinese) is composing.
+      if (event.isComposing || event.keyCode === 229) return;
       if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
         compose.requestSubmit();

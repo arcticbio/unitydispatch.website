@@ -20,9 +20,9 @@
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=c4b3365c92">
-<script>document.documentElement.classList.add('js')</script>
-<script src="/assets/js/site.js?v=81e4ec9ddb" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=bcc2dfae22">
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.udReady)document.documentElement.classList.remove('js')},3000)</script>
+<script src="/assets/js/site.js?v=15f827ef30" defer></script>
 <meta name="robots" content="noindex">
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Unity Dispatch","url":"https://www.unitydispatch.net"}</script>
 </head>
@@ -119,6 +119,8 @@
           <div class="hp" aria-hidden="true"><label>Leave this field empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
           <button class="btn btn--submit" type="submit">Submit</button>
           <p class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-notice" id="contact-sent">Thanks, we received your submission.</p>
+          <p class="form-notice is-error" id="contact-failed">Sorry, your message could not be sent. Please email <a href="mailto:info@unitydispatch.net">info@unitydispatch.net</a>.</p>
         </form>
       </div>
     </div>

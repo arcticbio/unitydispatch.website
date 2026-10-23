@@ -1,8 +1,11 @@
 name: CI
 
+# Runs on pushes to working branches. For main and pull requests into main it
+# runs as the first job of the deploy workflow, which only deploys if it passes.
 on:
   push:
-  pull_request:
+    branches-ignore: [main]
+  workflow_call:
 
 permissions:
   contents: read
@@ -28,7 +31,11 @@ jobs:
       - name: Check site/ is built from src/
         run: |
           node scripts/build.mjs
-          git diff --exit-code -- site || { echo "::error::site/ is out of date. Run 'npm run build' and commit the result."; exit 1; }
+          if [ -n "$(git status --porcelain -- site)" ]; then
+            git status --short -- site
+            echo "::error::site/ is out of date. Run 'npm run build' and commit the result."
+            exit 1
+          fi
 
       - name: API unit tests
         working-directory: api

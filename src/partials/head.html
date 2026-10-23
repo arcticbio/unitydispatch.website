@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css?v={{cssVersion}}">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.udReady)document.documentElement.classList.remove('js')},3000)</script>
 <script src="/assets/js/site.js?v={{jsVersion}}" defer></script>
 {{headExtra}}
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Unity Dispatch","url":"https://www.unitydispatch.net"}</script>
