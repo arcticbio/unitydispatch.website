@@ -387,7 +387,7 @@ section, .site-footer { position: relative; display: flow-root; }
   flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px;
   background-color: var(--mist);
   background-image: url("/assets/img/chat-pattern.svg");
-  background-size: 340px auto;
+  background-size: 290px auto;
 }
 .chat__msg { max-width: 80%; padding: 8px 12px; border-radius: 14px; font-weight: var(--w-book); word-wrap: break-word; white-space: pre-wrap; }
 .chat__msg--me { align-self: flex-end; background: var(--teal); color: #fff; border-bottom-right-radius: 4px; }

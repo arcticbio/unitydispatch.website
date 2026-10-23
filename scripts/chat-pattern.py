@@ -26,6 +26,6 @@ for lv in levels:
         d = 'M' + ' '.join(f'{px:.1f},{py:.1f}' for px, py in pts)
         paths.append(d)
 svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{N}" height="{N}" viewBox="0 0 {N} {N}">'
-       f'<path fill="none" stroke="#cfcdcd" stroke-width="1" d="{" ".join(paths)}"/></svg>')
+       f'<path fill="none" stroke="#d4d2d2" stroke-width="0.9" d="{" ".join(paths)}"/></svg>')
 open(__import__('pathlib').Path(__file__).resolve().parent.parent / 'site/assets/img/chat-pattern.svg', 'w').write(svg)
 print(len(svg), len(paths))
