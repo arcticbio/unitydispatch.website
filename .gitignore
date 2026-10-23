@@ -1,2 +1,4 @@
 node_modules/
 .DS_Store
+# Local snapshot of the original Wix site (third-party assets; never commit)
+_capture/

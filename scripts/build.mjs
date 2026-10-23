@@ -12,6 +12,7 @@
 // src/partials/partial.html. No dependencies: run with `node scripts/build.mjs`.
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -24,6 +25,13 @@ for (const f of await fs.readdir(path.join(SRC, 'partials'))) {
   partials[path.basename(f, '.html')] = (await fs.readFile(path.join(SRC, 'partials', f), 'utf8')).trimEnd();
 }
 const layout = await fs.readFile(path.join(SRC, 'layout.html'), 'utf8');
+
+// Cache-busting versions for the long-cached stylesheet and script.
+const fileHash = async (rel) => crypto.createHash('sha256').update(await fs.readFile(path.join(OUT, rel))).digest('hex').slice(0, 10);
+const assetVersions = {
+  cssVersion: await fileHash('assets/css/site.css'),
+  jsVersion: await fileHash('assets/js/site.js'),
+};
 
 function render(tpl, vars, depth = 0) {
   if (depth > 5) throw new Error('partial nesting too deep');
@@ -58,6 +66,8 @@ for (const f of (await fs.readdir(path.join(SRC, 'pages'))).sort()) {
     description: '',
     bodyClass: '',
     homeCurrent: '',
+    headExtra: '',
+    ...assetVersions,
     ...meta,
     canonical: ORIGIN + (urlPath === '/' ? '/' : urlPath),
   };
@@ -82,3 +92,13 @@ ${built.map((p) => `  <url>\n    <loc>${ORIGIN}${p === '/' ? '' : p}</loc>\n    
 `;
 await fs.writeFile(path.join(OUT, 'sitemap.xml'), sitemap);
 console.log('built site/sitemap.xml');
+
+// Azure Static Web Apps config: the CSP allows the one inline <script> in the
+// head partial by hash, so recompute it whenever that script changes.
+const inline = [...partials.head.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+if (inline.length !== 1) throw new Error(`expected exactly one inline script in head.html, found ${inline.length}`);
+const scriptHash = `sha256-${crypto.createHash('sha256').update(inline[0]).digest('base64')}`;
+const config = (await fs.readFile(path.join(SRC, 'staticwebapp.config.json'), 'utf8')).replace('{{inlineScriptHash}}', scriptHash);
+JSON.parse(config);
+await fs.writeFile(path.join(OUT, 'staticwebapp.config.json'), config);
+console.log('built site/staticwebapp.config.json');

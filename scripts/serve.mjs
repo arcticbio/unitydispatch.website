@@ -1,11 +1,14 @@
 // Minimal static server for local previews: `npm run serve` (port 4280).
 // Resolves extensionless URLs to folder index files like Azure Static Web
-// Apps does, serves site/404.html for unknown paths, and answers POST
-// /api/contact with a mock success (or a real call when --proxy-api=<url>).
+// Apps does and serves site/404.html for unknown paths. POST /api/contact is
+// answered by a mock (default), by the real handler in api/ with --api=real
+// (configure it with the same environment variables as in Azure), or by
+// another server with --proxy-api=<url>.
 import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../site');
 const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')));
@@ -36,6 +39,18 @@ http.createServer(async (req, res) => {
     let body = '';
     for await (const chunk of req) body += chunk;
     console.log('[api/contact]', req.method, body);
+    if (args.api === 'real') {
+      const { handle } = createRequire(import.meta.url)('../api/src/lib/contact.js');
+      try {
+        await handle({ method: req.method, origin: req.headers.origin, body }, process.env);
+        res.writeHead(200, { 'content-type': 'application/json' });
+        res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(err.status || 500, { 'content-type': 'application/json' });
+        res.end(JSON.stringify({ ok: false, error: err.message }));
+      }
+      return;
+    }
     if (args['proxy-api']) {
       const r = await fetch(args['proxy-api'], { method: req.method, headers: { 'content-type': 'application/json' }, body: req.method === 'POST' ? body : undefined });
       res.writeHead(r.status, { 'content-type': 'application/json' });
