@@ -94,6 +94,10 @@ main:focus { outline: none; }
 :focus-visible { outline: 2px solid var(--teal-light); outline-offset: 2px; }
 
 /* ---------- type ---------- */
+/* Tiny tracking so Jost's line lengths (and so its line breaks) match Futura's:
+   calibrated over every string on the original site, per weight. */
+*, ::before, ::after { letter-spacing: 0.0036em; }
+h1, h2, h3:not(.t-kicker), .vision__kicker, .review__name, .mobile-menu a { letter-spacing: 0.009em; }
 .t-h2 { font-size: 48px; line-height: 1.4; font-weight: var(--w-book); }
 .t-kicker { font-size: 24px; line-height: 1.4; font-weight: var(--w-light); }
 .t-body { font-size: 16px; line-height: 1.75; font-weight: var(--w-light); }
@@ -311,6 +315,46 @@ section, .site-footer { position: relative; display: flow-root; }
 .social img { width: 26px; height: 26px; }
 .footer-copy { --mt: 186px; --mb: 10px; --k: 0.5; --x: 151px; width: 330px; text-align: right; }
 
+/* ---------- policy pages (privacy, refund, terms, shipping) ---------- */
+.policy__col, .a11y__col { --cw: 980px; }
+.policy__title { --mt: 70px; --mb: 30px; --k: 0.5; width: 980px; font-size: 60px; line-height: 1.2; text-align: center; }
+.policy__h2, .policy__text { --k: 0.5; --x: 188px; width: 604px; }
+.policy__h2 { --mb: 20px; font-size: 19px; line-height: 1.4; }
+.policy__h2:first-child { --mt: 30px; }
+.policy__text { --mb: 30px; font-size: 16px; line-height: 1.75; }
+.policy__text:last-child { --mb: var(--policy-last-mb, 10px); }
+.policy__text p + p { margin-top: 1.75em; }
+.policy-body { min-height: var(--policy-min-h, 0); }
+.page-privacy { --policy-min-h: 980px; }
+.page-refund { --policy-min-h: 793px; }
+.page-shipping { --policy-min-h: 870px; }
+.page-terms { --policy-last-mb: 65px; }
+
+/* ---------- accessibility statement ---------- */
+.a11y-intro { background: #000; color: #fff; }
+.a11y-intro__text { --mt: 51px; --mb: 48px; --k: 0.5; --x: 14px; width: 941px; font-size: 24px; line-height: 1.4; }
+.a11y-body { padding-bottom: 55px; }
+.a11y__title { --mt: 23px; --mb: 20px; --k: 0.5; --x: 14px; width: 701px; font-size: 60px; line-height: 1.2; }
+.a11y__h2 { --k: 0.5; width: 922px; font-size: 48px; line-height: 1.4; }
+.a11y__text, .a11y__list { --k: 0.5; width: 941px; }
+.a11y__block--0 .a11y__text { --mb: 36px; --x: 14px; }
+.a11y__rule { height: 0; margin: 0 180px 21px; border: 0; border-top: 1px solid var(--teal); }
+.a11y__block--1 .a11y__h2 { --mt: 24px; --mb: 16px; --x: 13px; width: 701px; }
+.a11y__block--1 .a11y__text { --mb: 38px; --x: 13px; }
+.a11y__block--2 .a11y__h2 { --mt: 26px; --mb: 16px; --x: 19px; width: 701px; }
+.a11y__block--2 .a11y__text { --mb: 26px; --x: 19px; }
+.a11y__list { --mb: 35px; --x: 19px; width: 935px; padding-left: 0.5em; line-height: normal; }
+.a11y__block--3 .a11y__h2 { --mt: 29px; --mb: 27px; --x: 19px; }
+.a11y__block--3 .a11y__text { --mb: 40px; --x: 19px; }
+.a11y__block--4 .a11y__h2 { --mt: 27px; --mb: 27px; --x: 19px; }
+.a11y__block--4 .a11y__text { --mb: 34px; --x: 19px; }
+.a11y__block--5 .a11y__h2 { --mt: 26px; --mb: 27px; --x: 19px; }
+.a11y__block--5 .a11y__text { --mb: 34px; --x: 19px; }
+
+/* ---------- 404 ---------- */
+.notfound__title { --mt: 120px; --mb: 20px; --k: 0.5; width: 980px; font-size: 60px; line-height: 1.2; text-align: center; }
+.notfound__text { --mb: 140px; --k: 0.5; width: 980px; text-align: center; }
+
 /* ---------- chat widget ---------- */
 .chat__launcher {
   position: fixed; right: 20px; bottom: 20px; z-index: 70;
@@ -320,6 +364,7 @@ section, .site-footer { position: relative; display: flow-root; }
   transition: transform 0.2s ease;
 }
 .chat__launcher:hover { transform: scale(1.05); }
+.chat__launcher[hidden] { display: none; }
 .chat__launcher svg { width: 26px; height: 26px; }
 .chat__panel {
   position: fixed; right: 20px; bottom: 20px; z-index: 71;
@@ -534,7 +579,9 @@ section, .site-footer { position: relative; display: flow-root; }
   .form-status { font-size: 1.6rem; }
 
   /* footer bar */
-  .footer-bar { margin: 0; }
+  /* The original clips the last 8 design px of the footer. */
+  .site-footer { overflow: clip; }
+  .footer-bar { margin: 0 0 -0.8rem; }
   .footer-bar__main { min-height: 53.4rem; }
   .footer-bar__aside { min-height: 18.1rem; }
   .footer-brand { --mt: 2rem; --mb: 1rem; --x: 0px; width: 32rem; flex-direction: column; }
@@ -547,6 +594,42 @@ section, .site-footer { position: relative; display: flow-root; }
   .social { gap: 1.6rem; }
   .social img { width: 2.6rem; height: 2.6rem; }
   .footer-copy { --mt: 2rem; --mb: 1rem; --x: 2rem; width: 16.3rem; text-align: left; font-size: 1.3rem; }
+
+
+  /* policy pages */
+  .policy__col, .a11y__col { --cw: 32rem; }
+  .policy__title { --mt: 6rem; --mb: 2rem; width: 32rem; font-size: 2.5rem; }
+  .policy__h2, .policy__text { --x: 2rem; width: 28rem; }
+  .policy__h2 { --mb: 1rem; font-size: 1.8rem; }
+  .policy__h2:first-child { --mt: var(--policy-first-mt-m, 1.9rem); }
+  .policy__text { --mb: 2rem; font-size: 1.5rem; }
+  .policy__text:last-child { --mb: var(--policy-last-mb-m, 6.3rem); }
+  .policy-body { min-height: var(--policy-min-h-m, 0); }
+  .page-privacy { --policy-first-mt-m: 0.5rem; --policy-last-mb-m: 3.6rem; }
+  .page-shipping { --policy-first-mt-m: 2.1rem; --policy-last-mb-m: 6.2rem; }
+  .page-terms { --policy-last-mb-m: 1rem; --policy-min-h-m: 136.6rem; }
+  .page-terms .policy__h2 { width: 27rem; }
+  .page-privacy .policy__h2 { width: 27.4rem; }
+  .page-privacy .policy__h2:first-child { --mb: 0.6rem; }
+  .page-refund .policy__text:nth-of-type(1) { width: 27.5rem; }
+  .page-privacy .policy__text:nth-of-type(1) { width: 26.8rem; }
+  .page-privacy .policy__text:nth-of-type(2) { width: 28.1rem; }
+
+  /* accessibility statement */
+  .a11y-intro { margin-bottom: 0.4rem; }
+  .a11y-intro__text { --mt: 3.6rem; --mb: 3.7rem; --x: 2rem; width: 28rem; font-size: 2.1rem; }
+  .a11y-body { padding-bottom: 0; }
+  .a11y__title { --mt: 3.2rem; --mb: 1.2rem; --x: 2rem; width: 28rem; font-size: 3.9rem; }
+  .a11y__col .a11y__h2 { --mt: 2rem; --mb: 1rem; --x: 2rem; width: 28rem; font-size: 2.6rem; }
+  .a11y__col .a11y__text { --mb: 2rem; --x: 2rem; width: 28rem; font-size: 1.6rem; }
+  .a11y__block--0 .a11y__text { --mb: 3rem; }
+  .a11y__block--2 .a11y__text { --mb: 1rem; }
+  .a11y__col .a11y__list { --mb: 2rem; --x: 2rem; width: 28rem; font-size: 1.6rem; }
+  .a11y__rule { width: 32rem; margin: 0 auto 2.1rem; }
+
+  /* 404 */
+  .notfound__title { --mt: 6rem; width: 32rem; font-size: 3.9rem; }
+  .notfound__text { --mb: 8rem; width: 32rem; font-size: 1.6rem; }
 
   /* widgets */
   .chat__launcher { right: max(1.6rem, calc(50% - 16rem + 1.6rem)); bottom: 1.6rem; width: 5rem; height: 5rem; }

@@ -51,7 +51,6 @@ for (const b of backgrounds) {
 }
 
 // Logo mark (pin + route) used in the header and footer.
-await save(sharp(src('1526cd_091f4e169a104878876cabaf90f3b615~mv2.png')).resize({ width: 160 }).webp({ quality: 90, alphaQuality: 100, effort: 6 }), 'logo-mark.webp');
 await save(sharp(src('1526cd_091f4e169a104878876cabaf90f3b615~mv2.png')).resize({ width: 160 }).png({ compressionLevel: 9, palette: true }), 'logo-mark.png');
 
 // Social icons (black Twitter / LinkedIn glyphs).
