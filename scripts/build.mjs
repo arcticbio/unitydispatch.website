@@ -71,6 +71,7 @@ for (const f of (await fs.readdir(path.join(SRC, 'pages'))).sort()) {
     ...meta,
     canonical: ORIGIN + (urlPath === '/' ? '/' : urlPath),
   };
+  vars.descriptionTag = vars.description ? `<meta name="description" content="${vars.description.replace(/"/g, '&quot;')}">\n` : '';
   // Home is the only page whose nav item is highlighted, as on the original.
   if (urlPath === '/') vars.homeCurrent = ' aria-current="page"';
   vars.content = render(body, vars);
