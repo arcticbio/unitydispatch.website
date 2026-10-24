@@ -81,27 +81,11 @@ what is missing.
    deploys: a manual run from another branch fails with an explanation. The site appears at the
    `*.azurestaticapps.net` address shown on the Overview page, replacing Azure's
    "Congratulations on your new site!" placeholder.
-4. **Configure where form and chat messages go.** In *Settings → Environment variables*
-   (production), set **one or both** of the following:
-   - **Webhook (simplest):** `CONTACT_WEBHOOK_URL` = the URL of a Power Automate flow
-     ("When an HTTP request is received" → "Send an email" to info@unitydispatch.net), a Logic App,
-     a Microsoft Teams workflow, Zapier, etc. The endpoint receives JSON with `subject`, `text`,
-     `replyTo`, `source` (`contact-form` or `chat`) and the individual fields
-     (`firstName`, `lastName`, `email`, `phone`, `company`, `message`, `name`, `page`, `submittedAt`).
-   - **Azure Communication Services Email:** create an *Email Communication Service* with an
-     Azure-managed domain (or verify unitydispatch.net), connect it to a *Communication Service*,
-     then set `ACS_CONNECTION_STRING` (Communication Service → Keys), `CONTACT_FROM_EMAIL`
-     (e.g. `DoNotReply@<id>.azurecomm.net`) and `CONTACT_TO_EMAIL` (`info@unitydispatch.net`,
-     comma-separate several). Replies go straight to the visitor (Reply-To).
-   - Optional: `ALLOWED_ORIGINS` = `https://www.unitydispatch.net,https://unitydispatch.net` to
-     reject posts from other sites.
-
-   Until one of these is set, the form shows "Sorry, your message could not be sent. Please email
-   info@unitydispatch.net." instead of losing the message silently.
-
-   Spam protection: a hidden honeypot field and a per-visitor rate limit (5 messages per
-   10 minutes). If spam still gets through, add Cloudflare Turnstile or a similar CAPTCHA to the
-   form and verify its token in `api/src/lib/contact.js`.
+4. **Set up where form and chat messages go.** Follow
+   [Form and chat delivery](#form-and-chat-delivery) below. The recommended setup uses only Azure
+   and costs well under a cent a month at 10–15 messages. Until it's done, the form shows
+   "Sorry, your message could not be sent. Please email info@unitydispatch.net." instead of
+   losing the message silently.
 5. **Test** the `*.azurestaticapps.net` site: submit the form and a chat message, and check they
    arrive.
 6. **Move the domain.** DNS for unitydispatch.net is on Cloudflare, currently pointing at Wix. In
@@ -119,6 +103,102 @@ what is missing.
 
 The old URLs (`/`, `/privacy-policy`, `/refund-policy`, `/terms-and-conditions`,
 `/shipping-policy`, `/accessibility`) are unchanged, so search rankings and existing links carry over.
+
+## Form and chat delivery
+
+The contact form and the chat panel both post to `/api/contact`, a small Azure Function that is
+deployed with the site and runs inside the Static Web App (included in the Free plan). It checks
+each message (required fields, a hidden spam trap, at most 5 messages per visitor per 10 minutes)
+and passes it to the delivery option you configure with environment variables. The site itself
+stores nothing, and it doesn't need code changes for any option below.
+
+Each message arrives as a plain-text email, for example *"Website enquiry from Ada Lovelace"* or
+*"Website chat message from Ada"*, listing the fields the visitor filled in. Pressing **Reply**
+answers the visitor directly (Reply-To is their address).
+
+### Options compared (10–15 messages a month)
+
+| | **A. Azure Communication Services Email** (recommended) | **B. Logic App** (Consumption) | **C. Power Automate** |
+|---|---|---|---|
+| Azure only | Yes | Yes | No, Power Platform |
+| Cost per month | Under $0.01 ($0.00025 per email + $0.00012 per MB) | Under $0.01 for the workflow, plus the email it sends | A Premium licence (about $15/user/month): its HTTP trigger is a premium feature |
+| Setup | 2 Azure resources; 4 DNS records for your own sender address | 1 Azure resource and a 2-step workflow, plus whatever sends the email (ACS, or Outlook if your mailbox is Microsoft 365) | A flow |
+| The visitor sees "Thanks" when | Azure has accepted the email | The workflow has accepted the message; the email is sent just after | As B |
+| If sending fails | The visitor sees the error, with your address to email instead | The visitor still saw "Thanks"; the failure shows in the workflow's run history | As B |
+| Record of messages | Your inbox | Your inbox, plus the workflow's run history (kept 90 days by default) | As B |
+| Settings on the Static Web App | `ACS_CONNECTION_STRING`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL` | `CONTACT_WEBHOOK_URL` | `CONTACT_WEBHOOK_URL` |
+
+**Choose A** unless you want a browsable log of messages or other automation (posting to Teams,
+adding rows to a list); then choose B. Both can be set at once: each message then goes both ways
+and counts as sent if either works. C is listed because it is often suggested, but it is not
+cheaper and is not Azure.
+
+**Sender address for A.** Azure offers two kinds of sending domain:
+
+- **Azure-managed domain:** works instantly with no DNS changes. Mail comes from
+  `DoNotReply@<random>.azurecomm.net`, is limited to 10 emails an hour, is meant for testing,
+  and is more likely to land in junk mail. Good for trying things out.
+- **Your own domain (recommended for real use):** mail comes from, for example,
+  `DoNotReply@notify.unitydispatch.net`. It needs four DNS records in Cloudflare. Using a
+  subdomain such as `notify.unitydispatch.net` keeps them separate from the records your
+  existing email uses, so it can't disturb your normal mail.
+
+### Setting up A: Azure Communication Services Email
+
+In the Azure portal (use the same resource group as the Static Web App):
+
+1. **Create an Email Communication Service.** *Create a resource → Email Communication Services*.
+   Pick a data location (for example *United States*); step 4 must use the same one.
+2. **Add a domain.** Open it, then *Provision domains → Add domain*:
+   - for a quick test, choose **Azure domain** (ready immediately; skip step 3);
+   - for real use, choose **Custom domain** and enter `notify.unitydispatch.net`.
+3. **Verify the custom domain in Cloudflare.** The portal shows a TXT record. Add it in Cloudflare
+   *DNS → Records* and click *Verify*. Then it shows an SPF (TXT) record and two DKIM (CNAME)
+   records; add those too, set to **DNS only** (grey cloud), and verify them. If you already have
+   an SPF record on the same name, merge the two instead of adding a second one. Verification
+   usually completes within minutes.
+4. **Create a Communication Service** (*Create a resource → Communication Services*, same data
+   location). Open it, then *Email → Domains → Connect domain*, and pick the email service and
+   domain from steps 1–2.
+5. **Copy the key.** In the Communication Service, *Settings → Keys*, copy the
+   *Primary connection string*.
+6. **Configure the website.** In the Static Web App, *Settings → Environment variables*
+   (*Production*), add the following and click *Apply* (no redeploy needed):
+   - `ACS_CONNECTION_STRING` = the connection string from step 5
+   - `CONTACT_FROM_EMAIL` = the sender address listed under the domain's *MailFrom addresses*
+     (for example `DoNotReply@notify.unitydispatch.net`)
+   - `CONTACT_TO_EMAIL` = `info@unitydispatch.net` (comma-separate several)
+7. **Test** on the `*.azurestaticapps.net` address: send the form and a chat message. The first
+   ones may land in junk mail; mark them as *not junk*.
+
+The connection string is a password that can send email from your domain. It lives only in the
+Static Web App's settings; if it ever leaks, use *Regenerate* on the Keys page and update the setting.
+
+### Setting up B: Logic App
+
+1. *Create a resource → Logic App*, plan **Consumption**.
+2. In the designer, add the trigger **When an HTTP request is received**, then a send-email
+   action: **Azure Communication Services Email → Send email** (needs steps 1–5 of option A), or
+   **Office 365 Outlook → Send an email (V2)** if info@unitydispatch.net is a Microsoft 365
+   mailbox (it then sends from that mailbox). The request body has `subject`, `text`, `replyTo`,
+   `source` (`contact-form` or `chat`) and the individual fields (`firstName`, `lastName`, `email`,
+   `phone`, `company`, `message`, `name`, `page`, `submittedAt`). Map `subject`, `text`, and
+   `replyTo` to the email's Subject, Body, and Reply-To.
+3. Save, copy the trigger's **HTTP URL**, and set it as `CONTACT_WEBHOOK_URL` in the Static Web App's
+   environment variables. The URL contains its own access key: keep it private.
+
+An Outlook connection is signed in as a person; if that account's password or sign-in policy
+changes, the connection may need signing in again (the run history shows the failures).
+
+### Optional settings
+
+- `ALLOWED_ORIGINS`: comma-separated list of sites allowed to post, for example
+  `https://www.unitydispatch.net,https://unitydispatch.net`. Leave it unset while you test on the
+  `*.azurestaticapps.net` address, or include that address too, or the form there will be refused.
+
+**Spam protection:** a hidden honeypot field and the per-visitor rate limit. If spam still gets
+through, add Cloudflare Turnstile or a similar CAPTCHA to the form and verify its token in
+`api/src/lib/contact.js`.
 
 ## What changed from the Wix site, and why
 
