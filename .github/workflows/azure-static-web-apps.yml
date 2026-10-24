@@ -2,8 +2,9 @@ name: Deploy to Azure Static Web Apps
 
 # Production deploys on pushes to main; pull requests get a preview
 # environment. CI (ci.yml) runs first and must pass. Needs the
-# AZURE_STATIC_WEB_APPS_API_TOKEN repository secret (see README) and does
-# nothing until it exists.
+# AZURE_STATIC_WEB_APPS_API_TOKEN repository secret (see README): until it
+# exists, pushes skip the deploy with a notice. A manual run that can't deploy
+# (no secret, or started from a branch other than main) fails and says why.
 
 on:
   push:
@@ -28,17 +29,27 @@ jobs:
 
   deploy:
     needs: ci
-    # Manual runs only deploy main; other branches would otherwise overwrite production.
-    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       SWA_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      # Manual runs only deploy main; other branches would otherwise overwrite production.
+      - name: Check branch
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+        run: |
+          echo "::error title=Nothing deployed::Only main deploys, and this run used ${GITHUB_REF_NAME}. Create a main branch from it if there isn't one yet (README step 1), then run the workflow again with 'Use workflow from' set to main."
+          exit 1
 
       - name: Azure not configured yet
         if: env.SWA_TOKEN == ''
-        run: echo "::notice::AZURE_STATIC_WEB_APPS_API_TOKEN is not set, so nothing was deployed."
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            echo "::error title=Nothing deployed::The AZURE_STATIC_WEB_APPS_API_TOKEN repository secret is not set (README step 3)."
+            exit 1
+          fi
+          echo "::notice::AZURE_STATIC_WEB_APPS_API_TOKEN is not set, so nothing was deployed."
+
+      - uses: actions/checkout@v6
 
       - name: Deploy
         if: env.SWA_TOKEN != ''
@@ -55,7 +66,7 @@ jobs:
 
   close-preview:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       SWA_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
     steps:

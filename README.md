@@ -62,11 +62,12 @@ npm run test:e2e       # with the server running
 Deployment runs from GitHub Actions (`.github/workflows/azure-static-web-apps.yml`): every push to
 `main` deploys production, and every pull request into `main` gets its own preview URL. CI
 (build check, API tests, browser tests) runs first, and nothing deploys unless it passes. Until
-the secret in step 3 exists, the workflow skips deployment with a notice and doesn't fail.
+the secret in step 3 exists, pushes skip deployment with a notice; a manual run fails and says
+what is missing.
 
 1. **Create `main`.** Merge this work into a `main` branch (for example, open a pull request from
    this branch, or create `main` from it). In GitHub *Settings → General*, make `main` the default
-   branch.
+   branch. This doesn't touch the live site: unitydispatch.net keeps showing Wix until step 6.
 2. **Create the Static Web App.** In the Azure portal: *Create a resource → Static Web App*.
    - Plan: **Free** is enough (managed API functions, 2 custom domains, free SSL).
      Choose **Standard** if you want an SLA or more custom domains.
@@ -76,8 +77,10 @@ the secret in step 3 exists, the workflow skips deployment with a notice and doe
 3. **Connect GitHub.** In the new resource open *Overview → Manage deployment token*, copy it,
    then in GitHub *Settings → Secrets and variables → Actions* add a repository secret named
    `AZURE_STATIC_WEB_APPS_API_TOKEN`. Run the workflow (*Actions → Deploy to Azure Static Web Apps
-   → Run workflow*) or push to `main`. The site appears at the `*.azurestaticapps.net` address
-   shown on the Overview page.
+   → Run workflow*, with *Use workflow from* set to **main**) or push to `main`. Only `main`
+   deploys: a manual run from another branch fails with an explanation. The site appears at the
+   `*.azurestaticapps.net` address shown on the Overview page, replacing Azure's
+   "Congratulations on your new site!" placeholder.
 4. **Configure where form and chat messages go.** In *Settings → Environment variables*
    (production), set **one or both** of the following:
    - **Webhook (simplest):** `CONTACT_WEBHOOK_URL` = the URL of a Power Automate flow
