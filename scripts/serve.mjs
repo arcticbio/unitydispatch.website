@@ -42,7 +42,7 @@ http.createServer(async (req, res) => {
     if (args.api === 'real') {
       const { respond } = createRequire(import.meta.url)('../api/src/lib/contact.js');
       const out = await respond({
-        method: req.method, origin: req.headers.origin, referer: req.headers.referer, host: req.headers.host,
+        method: req.method, origin: req.headers.origin, referer: req.headers.referer,
         contentType: req.headers['content-type'], client: req.socket.remoteAddress, body,
       }, process.env, undefined, console);
       res.writeHead(out.status, out.headers || { 'content-type': 'application/json' });

@@ -132,11 +132,14 @@ test('plain form posts are redirected back to the page with a notice', async () 
   const { respond } = require('../src/lib/contact');
   const env = { CONTACT_WEBHOOK_URL: 'https://hook.example/x' };
   const body = new URLSearchParams({ firstName: 'Ada', email: 'ada@example.com', message: 'Hi', website: '' }).toString();
-  const base = { method: 'POST', body, contentType: 'application/x-www-form-urlencoded', host: 'www.unitydispatch.net' };
+  const base = { method: 'POST', body, contentType: 'application/x-www-form-urlencoded' };
   const ok = await respond({ ...base, referer: 'https://www.unitydispatch.net/privacy-policy' }, env, { fetch: fakeFetch() });
   assert.deepEqual(ok, { status: 303, headers: { location: '/privacy-policy#contact-sent' } });
-  const offsite = await respond({ ...base, referer: 'https://evil.example/x' }, env, { fetch: fakeFetch() });
-  assert.equal(offsite.headers.location, '/#contact-sent');
+  // Only a path on this site, never another host.
+  for (const referer of ['https://www.unitydispatch.net//evil.example/x', 'https://www.unitydispatch.net/\\evil.example', 'https://www.unitydispatch.net/%2F%2Fevil.example', undefined, 'not a url']) {
+    const res = await respond({ ...base, referer }, env, { fetch: fakeFetch() });
+    assert.equal(res.headers.location, '/#contact-sent', String(referer));
+  }
   const failed = await respond({ ...base, referer: 'https://www.unitydispatch.net/' }, {}, {});
   assert.deepEqual(failed, { status: 303, headers: { location: '/#contact-failed' } });
   const json = await respond({ method: 'POST', body: form(), contentType: 'application/json' }, {}, {});

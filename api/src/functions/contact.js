@@ -12,7 +12,6 @@ app.http('contact', {
     method: request.method,
     origin: request.headers.get('origin'),
     referer: request.headers.get('referer'),
-    host: request.headers.get('x-forwarded-host') || new URL(request.url).host,
     contentType: request.headers.get('content-type') || '',
     client: (request.headers.get('x-forwarded-for') || request.headers.get('x-azure-clientip') || '').split(',')[0].trim(),
     body: await request.text(),

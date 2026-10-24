@@ -158,11 +158,14 @@ async function handle({ method, origin, body, contentType, client }, env, deps) 
 
 // Where to send a browser that posted the plain HTML form (no JavaScript):
 // back to the page it came from, at a notice the page shows via :target.
-function backTo(referer, host, notice) {
+// Only the referer's path is used, so the redirect always stays on this site
+// (Azure doesn't pass the public host name to the function reliably); paths
+// starting with // would be read as another host and fall back to /.
+function backTo(referer, notice) {
   let path = '/';
   try {
-    const url = new URL(referer || '');
-    if (url.host === host) path = url.pathname;
+    const p = new URL(referer || '').pathname;
+    if (/^\/(?!\/)[\w\-./]*$/.test(p)) path = p;
   } catch { /* no or invalid referer */ }
   return `${path}#${notice}`;
 }
@@ -174,12 +177,12 @@ async function respond(req, env, deps, log = {}) {
   try {
     const result = await handle(req, env, deps);
     if (result.failed && result.failed.length && log.warn) log.warn('Some delivery channels failed:', result.failed);
-    if (isFormPost) return { status: 303, headers: { location: backTo(req.referer, req.host, 'contact-sent') } };
+    if (isFormPost) return { status: 303, headers: { location: backTo(req.referer, 'contact-sent') } };
     return { status: 200, jsonBody: { ok: true } };
   } catch (err) {
     const status = err.status || 500;
     if (status >= 500 && log.error) log.error('Contact submission failed:', err.message, err.causes || '');
-    if (isFormPost) return { status: 303, headers: { location: backTo(req.referer, req.host, 'contact-failed') } };
+    if (isFormPost) return { status: 303, headers: { location: backTo(req.referer, 'contact-failed') } };
     return { status, jsonBody: { ok: false, error: status >= 500 && status !== 503 ? 'The message could not be delivered.' : err.message } };
   }
 }

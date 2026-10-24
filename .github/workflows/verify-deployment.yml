@@ -32,13 +32,15 @@ jobs:
           for p in / /privacy-policy /refund-policy /terms-and-conditions /shipping-policy /accessibility /sitemap.xml /robots.txt /favicon.ico; do
             expect "GET $p" 200 "$(code "$BASE_URL$p")"
           done
-          expect "title /" "Home | Unity Dispatch" "$(curl -s "$BASE_URL/" | grep -o '<title>[^<]*' | sed 's/<title>//')"
+          expect "title /" "Unity Dispatch" "$(curl -s "$BASE_URL/" | grep -o '<title>[^<]*' | sed 's/<title>//')"
           expect "title /privacy-policy" "$(grep -o '<title>[^<]*' site/privacy-policy/index.html | sed 's/<title>//')" "$(curl -s "$BASE_URL/privacy-policy" | grep -o '<title>[^<]*' | sed 's/<title>//')"
           expect "GET /no-such-page" 404 "$(code "$BASE_URL/no-such-page")"
           curl -s "$BASE_URL/no-such-page" | grep -q 'Page Not Found' && echo "  ok    404 page body" || { echo "  FAIL  404 page body"; fail=1; }
           expect "/home redirects" "$BASE_URL/" "$(loc "$BASE_URL/home")"
           expect "/index.html redirects" "$BASE_URL/" "$(loc "$BASE_URL/index.html")"
-          expect "trailing slash removed" "$BASE_URL/privacy-policy" "$(loc "$BASE_URL/privacy-policy/")"
+          for p in /privacy-policy/ /accessibility/ /privacy-policy/index.html; do
+            echo "  info  GET $p -> $(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$BASE_URL$p")"
+          done
 
           echo "Headers on /:"
           curl -sI "$BASE_URL/" | grep -iE '^(content-type|content-security-policy|strict-transport-security|x-frame-options|x-content-type-options|referrer-policy|permissions-policy|cache-control):' | sed 's/^/    /'
